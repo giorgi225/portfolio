@@ -41,11 +41,11 @@
                                 <p class="text-sm mt-1 text-red-400" v-if="errors.message">{{ errors.message }}</p>
                             </div>
 
-                            <button
-                                class="w-full rounded p-4 bg-fontColor text-light opacity-80 hover:opacity-100 transition-all">Send
-                                Message</button>
+                            <button :type="submit ? 'submit' : 'button'"
+                                class="w-full rounded p-4 bg-fontColor text-light opacity-80 hover:opacity-100 transition-all">{{ submit ? 'Submit' : 'sending' }}</button>
                         </div>
                     </form>
+                    <div v-if="successMessage" class="p-4 bg-green-400 text-white">message sent successfully</div>
                 </div>
             </div>
         </div>
@@ -58,13 +58,15 @@
     export default {
         data() {
             return {
-                sendMessage: false,
+                sendMessage: true,
+                submit: true,
                 errors: [],
                 form: {
                     name: "",
                     email: "",
                     message: "",
-                }
+                },
+                successMessage: false,
             };
         },
         methods: {
@@ -97,8 +99,10 @@
                     this.errors['message'] = ''
                 }
 
+
                 if (this.errors.name.length === 0 && this.errors.email.length === 0 && this.errors.subject.length === 0 && this.errors.message.length === 0) {
-                    const response = await fetch("https://api.web3forms.com/submit", {
+                    this.submit = false
+                    await fetch("https://api.web3forms.com/submit", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
@@ -110,11 +114,18 @@
                         email: this.form.email,
                         message: this.form.message + ` (subject: ${this.form.subject} )`,
                     }),
-                });
-                const result = await response.json();
-                if (result.success) {
-                    console.log(result);
-                }
+                }).then((res)=> {
+                    this.submit = true
+                    this.successMessage = true
+                    setTimeout(()=> {
+                        this.successMessage = false
+                    },2500)
+                    this.form.name = ''
+                    this.form.email = ''
+                    this.form.subject = ''
+                    this.form.message = ''
+                })
+                // const result = await response.json();
                 }
             },
         },
