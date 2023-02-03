@@ -88,3 +88,16 @@
         opacity: 0;
     }
 }
+
+.spiner {
+    animation: spiner 1s infinite linear;
+}
+
+@keyframes spiner {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
