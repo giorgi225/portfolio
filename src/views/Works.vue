@@ -126,7 +126,7 @@
         },
         methods: {
             load() {
-                this.loader = false
+                this.loader = true
             }
         }
     }
