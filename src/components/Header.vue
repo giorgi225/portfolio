@@ -67,7 +67,6 @@
                 window.addEventListener('scroll', (e)=> {
                     if(window.scrollY >= 50) {
                         this.scroll = true
-                        console.log(this.scroll)
                     }else {
                         this.scroll = false
                     }

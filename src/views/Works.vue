@@ -18,7 +18,7 @@
                         <div v-if="!loader" class="absolute w-full bg-gray h-full flex items-center justify-center left-0 top-0">
                             <div class="spiner w-12 h-12 border-2 border-fontColor border-r-transparent rounded-full"></div>
                         </div>
-                        <img src="../assets/images/works/cinemania.png" alt="">
+                        <img @load="load" src="../assets/images/works/cinemania.png" alt="">
                     </div>
                 </div>
             </a>
