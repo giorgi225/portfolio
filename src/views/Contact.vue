@@ -64,6 +64,7 @@
                 form: {
                     name: "",
                     email: "",
+                    subject: "",
                     message: "",
                 },
                 successMessage: false,
