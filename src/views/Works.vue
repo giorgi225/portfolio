@@ -127,6 +127,7 @@
         methods: {
             load() {
                 this.loader = true
+            
             }
         }
     }
