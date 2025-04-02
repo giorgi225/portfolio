@@ -3,8 +3,9 @@ import type { Metadata } from "next";
 import { Sen } from "next/font/google";
 // Styles
 import "@/app/globals.css";
-import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/footer";
+// Third-party
+import { Analytics } from "@vercel/analytics/react"
 
 // Fonts
 const mainFont = Sen({
@@ -30,6 +31,7 @@ export default function RootLayout({
       >
         {children}
         <Footer />
+        <Analytics />
       </body>
     </html>
   );

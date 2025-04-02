@@ -22,7 +22,7 @@ export default function Experience({ id }: { id: string }) {
   const workingExperiences = [
     {
       type: "contract",
-      position: "Full-stack Developer",
+      position: "Full-Stack Next.js Developer",
       company: "Vitistravel",
       link: "https://vitistravel.com",
       date_range: "2024 Apr - 2024 Oct",
