@@ -3,6 +3,7 @@ import Gallery from "@/components/gallery/Gallery";
 import { Button } from "@/components/ui/button";
 import { projects } from "@/data/data";
 import { ArrowLeft03Icon, Link01Icon } from "hugeicons-react";
+import { headers } from "next/headers";
 import Link from "next/link";
 import React from "react";
 
@@ -13,7 +14,8 @@ export default async function page({
 }) {
   const { slug } = await params;
   const projectData = projects.filter((project) => project.slug === slug)[0];
-
+  const isFromLocal = (await headers()).get("referer")?.includes("https://shalamberidze-gigi.vercel.app") ? true : false;
+  
   if (!projectData) {
     return (
       <div className="w-full flex-1 h-[calc(100vh-150px)] flex items-center">
@@ -56,7 +58,7 @@ export default async function page({
           <div className="w-full text-foreground flex flex-col gap-4 md:gap-6 lg:gap-12">
             <div className="w-full flex md:flex-row flex-col items-start justify-between">
               <div className="flex flex-col gap-2">
-                <GoBackBtn text="Go Back" targetId="projects" />
+                <GoBackBtn text="Go Back" isFromLocal={isFromLocal} />
                 <h1 className="text-xl pl-1 lg:pl-0 md:text-2xl lg:text-3xl xl:text-4xl font-bold">
                   {projectData.title2}
                 </h1>
