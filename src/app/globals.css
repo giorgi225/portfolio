@@ -1,0 +1,49 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@theme inline {
+  /* Colors */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-neutral: var(--neutral);
+  --color-primary: var(--primary);
+}
+
+:root {
+  --background: #f9f9fa;
+  --foreground: #1f1f1f;
+  --neutral: #ffffff;
+  --primary: #b6ef45;
+}
+
+@layer base {
+  html,
+  body {
+    @apply scroll-smooth;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  .container-main {
+    @apply flex w-full lg:max-w-5xl xl:max-w-7xl mx-auto px-4 md:px-6;
+  }
+  .page-container {
+    @apply flex flex-col py-[48px] lg:py-[96px] xl:py-[164px] gap-[48px] lg:gap-[96px] xl:gap-[164px];
+  }
+}
+
+.blog {
+  @apply flex flex-col text-sm font-medium;
+}
+
+.blog p {
+  @apply mb-3 md:mb-4 leading-6;
+}
+
+.blog h6 {
+  @apply font-semibold md:font-bold text-base mb-1;
+}
+
+.blog ul {
+  @apply pl-4 list-disc flex flex-col gap-2 mb-3 md:mb-4;
+}
