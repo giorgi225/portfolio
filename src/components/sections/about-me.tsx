@@ -5,6 +5,7 @@ import { Button } from "../ui/button";
 import { SmartPhone01Icon } from "hugeicons-react";
 import { useEffect, useRef, useState } from "react";
 import { MouseParallaxChild } from "react-parallax-mouse";
+import Link from "next/link";
 
 export default function AboutMe({ id }: { id: string }) {
   const titleRef = useRef(null);
@@ -61,8 +62,11 @@ export default function AboutMe({ id }: { id: string }) {
               {text}
             </motion.p>
           ))}
-          <Button className="w-max" variant={"primary"}>
-            Call Me <SmartPhone01Icon />
+          <Button asChild className="w-max" variant="primary">
+            <Link href={`tel:+995574175188`}>
+              Call Me
+              <SmartPhone01Icon />
+            </Link>
           </Button>
         </div>
       </div>

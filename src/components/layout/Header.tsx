@@ -212,8 +212,15 @@ export default function Header() {
     },
     exit: {
       opacity: 0,
+      width: "50px",
+      height: "50px",
+      maxWidth: "50px",
+      maxHeight: "50px",
+      top: "-200px",
+      borderRadius: "999px",
       transition: {
         duration: 0,
+        delay: 0
       },
     },
   };

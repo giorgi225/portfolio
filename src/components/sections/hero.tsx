@@ -23,7 +23,7 @@ import {
 import { useRef, useState } from "react";
 import { div } from "framer-motion/client";
 
-export default function Hero({id}: {id: string}) {
+export default function Hero({ id }: { id: string }) {
   const { scrollY, scrollYProgress } = useScroll();
   const [isScrolled, setIsScrolled] = useState<boolean>(false);
   const videoRef = useRef<any>(null);
@@ -47,7 +47,10 @@ export default function Hero({id}: {id: string}) {
         globalFactorY={0.1}
         className="flex w-full h-[calc(100vh-120px)] lg:h-[calc(100vh-150px)] md:px-3"
       >
-        <div ref={videoRef} className="relative w-full flex-1 bg-black md:rounded-[36px] overflow-hidden">
+        <div
+          ref={videoRef}
+          className="relative w-full flex-1 bg-black md:rounded-[36px] overflow-hidden"
+        >
           <MouseParallaxChild
             factorX={1}
             factorY={1}
@@ -62,7 +65,7 @@ export default function Hero({id}: {id: string}) {
               muted
               loop
               playsInline
-              initial={{ opacity: 0, scale: 0, y: 0 }}  // Ensure initial y is 0
+              initial={{ opacity: 0, scale: 0, y: 0 }} // Ensure initial y is 0
               transition={{
                 duration: 1.5,
                 ease: [0.6, 0.05, 0.01, 0.99],
@@ -97,19 +100,22 @@ export default function Hero({id}: {id: string}) {
               </div>
               <div className="flex items-center space-x-4 lg:space-x-6">
                 <Link
-                  href=""
+                  href="https://www.facebook.com/profile.php?id=100092546885517"
+                  target="_blank"
                   className="w-9 lg:w-11 h-9 lg:h-11 grid place-content-center rounded-xl lg:rounded-2xl border border-neutral/30 text-neutral/80 hover:bg-primary/20 hover:text-primary hover:border-primary hover:rounded-4xl transition-all"
                 >
                   <Facebook02Icon className="size-4 lg:size-5" />
                 </Link>
                 <Link
-                  href=""
+                  href="https://github.com/giorgi225"
+                  target="_blank"
                   className="w-9 lg:w-11 h-9 lg:h-11 grid place-content-center rounded-xl lg:rounded-2xl border border-neutral/30 text-neutral/80 hover:bg-primary/20 hover:text-primary hover:border-primary hover:rounded-4xl transition-all"
                 >
                   <GithubIcon className="size-4 lg:size-5" />
                 </Link>
                 <Link
-                  href=""
+                  href="https://www.linkedin.com/in/gigi-shalamberidze-b47a27260/"
+                  target="_blank"
                   className="w-9 lg:w-11 h-9 lg:h-11 grid place-content-center rounded-xl lg:rounded-2xl border border-neutral/30 text-neutral/80 hover:bg-primary/20 hover:text-primary hover:border-primary hover:rounded-4xl transition-all"
                 >
                   <Linkedin02Icon className="size-4 lg:size-5" />
