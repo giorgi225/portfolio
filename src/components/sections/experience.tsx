@@ -34,7 +34,7 @@ export default function Experience({ id }: { id: string }) {
       position: "Next.js Developer",
       company: "ImperialTours",
       link: "https://imperialtours.com",
-      date_range: "2024 Apr - 2024 Oct",
+      date_range: "2024 Jan - 2024 Apr",
       description:
         "Design and development of Imperial Tours, a tours website built under contract. Designed the UI and developed the React.js frontend, integrating it with the backend while collaborating with backend developers.",
     },
@@ -43,7 +43,7 @@ export default function Experience({ id }: { id: string }) {
       position: "Front-end Developer",
       company: "Metrix",
       link: "https://metrix.ge",
-      date_range: "2024 Apr - 2024 Oct",
+      date_range: "2023 Feb - 2024 Jan",
       description:
         "Redesign and development of Metrix, a rental platform. Worked part-time to revamp the website using React.js and provided ongoing support.",
     },
@@ -52,7 +52,7 @@ export default function Experience({ id }: { id: string }) {
       position: "Front-end Developer",
       company: "LLC Trade Holding",
       link: "https://viptrade.com",
-      date_range: "2024 Apr - 2024 Oct",
+      date_range: "2021 Apr - 2022 Oct",
       description:
         "Front-end development for LLC Trade Holding, where I started my career. Built CRM systems using HTML, CSS, and JavaScript, collaborating closely with designers and backend developers.",
     },
