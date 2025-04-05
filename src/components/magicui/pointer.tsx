@@ -56,7 +56,7 @@ export function Pointer({
       }
 
       // Add cursor-none to parent
-      // parentElement.style.cursor = "none";
+      parentElement.style.cursor = "none";
 
       // Add event listeners to parent
       const handleMouseMove = (e: MouseEvent) => {
