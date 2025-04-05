@@ -108,11 +108,10 @@ export default function Works({ id }: { id: string }) {
                         initial={{ scale: 0 }}
                         animate={{ scale: 1 }}
                         transition={{ duration: 0.3, ease: "easeOut" }}
-                        className="text-white"
+                        className="text-neutral border border-neutral/20 flex items-center justify-center w-24 h-24 rounded-full bg-white/10 backdrop-blur-sm "
                       >
-                        <motion.span className="text-sm lg:text-lg font-medium flex items-center gap-2">
-                          View Details
-                          <ArrowRight01Icon className="size-4" />
+                        <motion.span className="text-sm text-nowrap font-medium items-center gap-2">
+                          See Project
                         </motion.span>
                       </motion.div>
                     </Pointer>

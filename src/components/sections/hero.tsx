@@ -93,7 +93,7 @@ export default function Hero({ id }: { id: string }) {
                   <span className="text-primary">WEB</span> Experiences
                 </h1>
                 <p className="text-xs sm:text-sm lg:text-base sm:px-0 px-4 font-medium leading-5 md:leading-auto lg:leading-6 text-neutral/80 text-center">
-                  I'm a Web Developer with four years of frontend and one years
+                  I'm a Web Developer with {new Date().getFullYear() - 2020} years of frontend and {new Date().getFullYear() - 2024} years
                   of backend expertise, focusing on Html, Css, Javascript, and
                   React.js/Next.js.
                 </p>

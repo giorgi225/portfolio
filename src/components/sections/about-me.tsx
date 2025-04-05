@@ -17,7 +17,7 @@ export default function AboutMe({ id }: { id: string }) {
     offset: ["start end", "end start"], // Start at entering, stop at leaving
   });
 
-  const y = useTransform(scrollYProgress, [0.2, 1], [0, 380]); // Moves up while in view
+  const y = useTransform(scrollYProgress, [0.2, 1], [0, 200]); // Moves up while in view
   const scale = useTransform(scrollYProgress, [0.2, 1], [1, 0.8]); // Slight scale-up
 
   return (
@@ -46,9 +46,8 @@ export default function AboutMe({ id }: { id: string }) {
           {/* Static Description */}
           <div className="flex flex-col gap-4 lg:gap-6">
             {[
-              "I’m a Web developer with 4+ years of experience turning ideas into high-performance web applications. Specializing in React, Next.js, and modern JavaScript, I’ve spent the last two years expanding my expertise into backend development—architecting scalable systems with Node.js, Express, and relational databases (MySQL, Prisma). My work balances sleek frontend experiences with bulletproof backend logic, ensuring apps are as fast as they are functional.",
-              "Clean code and scalable architecture are the backbone of everything I build. I obsess over performance optimization, achieving 90+ Lighthouse scores for mission-critical platforms by streamlining code, optimizing APIs, and implementing lazy-loading strategies. Security-first practices like JWT and OAuth are non-negotiable, and I design systems to grow with your users, not hold them back.",
-              "Let’s create something exceptional. Whether it’s a dynamic travel portal, a service-based platform, or a custom web solution, I thrive on solving complex problems with elegant, maintainable code. Explore my projects below, or reach out to discuss how we can build software that stands the test of time—and traffic.",
+              `I’m a Web Developer with over ${new Date().getFullYear() - 2020} years of experience crafting high-performance web apps. I specialize in React, Next.js, and modern JavaScript, and have recently expanded my expertise into backend development with Node.js, Express, and MySQL/Prisma. I focus on building seamless user experiences while ensuring reliable and scalable backend systems.`,
+              "I prioritize clean code, scalability, and security. I implement best practices like JWT, OAuth, and performance optimizations to ensure apps are fast, secure, and able to grow with your users. Let’s create something exceptional together!",
             ].map((text, i) => (
               <motion.p
                 key={i}
@@ -65,7 +64,8 @@ export default function AboutMe({ id }: { id: string }) {
                 {text}
               </motion.p>
             ))}
-            <motion.div className="w-max"
+            <motion.div
+              className="w-max"
               initial={{ scale: 0 }}
               whileInView={{ scale: 1 }}
               transition={{ duration: 1, ease: [0.6, 0.05, 0.01, 0.99] }}

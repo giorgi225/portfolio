@@ -136,7 +136,6 @@ export default function Header() {
     0.2
   );
   useEffect(() => {
-
     setIsScrollCompleted(false);
   }, [router]);
 
@@ -185,7 +184,9 @@ export default function Header() {
       opacity: 1,
       transition: {
         duration: 0.3,
-        ease: "easeInOut",
+        ease: "easeOut",
+        stiffness: 5,
+        damping: 20,
       },
     },
     expanded_nav: {
@@ -194,7 +195,7 @@ export default function Header() {
       maxWidth: "500px",
       maxHeight: "500px",
       transition: {
-        delay: 0.7,
+        delay: 0.4,
         duration: 0.4,
         ease: "easeInOut",
       },
@@ -249,7 +250,7 @@ export default function Header() {
             animate={["show_circle", "expanded_nav"]}
             transition={{ type: "spring" }}
             exit="exit"
-            className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[50px] h-[50px] shadow-lg overflow-hidden bg-background"
+            className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[50px] h-[50px] overflow-hidden bg-background" style={{boxShadow: "0px 0px 20px #00000020"}}
           >
             <Nav
               activeTab={activeTab}

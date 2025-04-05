@@ -31,13 +31,13 @@ export function Pointer({
   const containerRef = useRef<HTMLDivElement>(null);
   const [isMobile, setIsMobile] = useState(false);
   const [isScrolling, setIsScrolling] = useState(false);
-  const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
-  
+
+  // check device based screen width
   useEffect(() => {
     const updateIsMobile = () => setIsMobile(window.innerWidth <= 768);
 
     // Set initial state
-    updateIsMobile();    
+    updateIsMobile();
     // Listen for window resize
     window.addEventListener("resize", updateIsMobile);
 
@@ -48,72 +48,51 @@ export function Pointer({
   useEffect(() => {
     if (typeof window !== "undefined" && containerRef.current) {
       const parentElement = containerRef.current.parentElement;
+      if (!parentElement) return;
+
       if (isMobile) {
-        if (parentElement) {
-          parentElement.style.cursor = "pointer";
-        }
+        parentElement.style.cursor = "pointer";
         return;
       }
 
-      if (parentElement) {
-        // Add cursor-none to parent
-        parentElement.style.cursor = isScrolling ? "pointer" : "none";
+      // Add cursor-none to parent
+      // parentElement.style.cursor = "none";
 
-        // Add event listeners to parent
-        const handleMouseMove = (e: MouseEvent) => {
-          x.set(e.clientX);
-          y.set(e.clientY);
-        };
+      // Add event listeners to parent
+      const handleMouseMove = (e: MouseEvent) => {
+        x.set(e.clientX);
+        y.set(e.clientY);
+      };
 
-        const handleMouseEnter = () => {
-          setIsActive(true);
-        };
+      const handleMouseEnter = (e: MouseEvent) => {        
+        x.set(e.clientX);
+        y.set(e.clientY);
+        setIsActive(true);
+      };
 
-        const handleMouseLeave = () => {
-          setIsActive(false);
-        };
+      const handleMouseLeave = () => {
+        setIsActive(false);
+      };
 
-        parentElement.addEventListener("mousemove", handleMouseMove);
-        parentElement.addEventListener("mouseenter", handleMouseEnter);
-        parentElement.addEventListener("mouseleave", handleMouseLeave);
+      parentElement.addEventListener("mousemove", handleMouseMove);
+      parentElement.addEventListener("mouseenter", handleMouseEnter);
+      parentElement.addEventListener("mouseleave", handleMouseLeave);
 
-        return () => {
-          parentElement.style.cursor = "";
-          parentElement.removeEventListener("mousemove", handleMouseMove);
-          parentElement.removeEventListener("mouseenter", handleMouseEnter);
-          parentElement.removeEventListener("mouseleave", handleMouseLeave);
-        };
-      }
+      return () => {
+        parentElement.style.cursor = "";
+        parentElement.removeEventListener("mousemove", handleMouseMove);
+        parentElement.removeEventListener("mouseenter", handleMouseEnter);
+        parentElement.removeEventListener("mouseleave", handleMouseLeave);
+      };
     }
   }, [x, y, isMobile, isScrolling]);
-
-  // Detect scroll activity
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolling(true);
-
-      if (scrollTimeoutRef.current) {
-        clearTimeout(scrollTimeoutRef.current);
-      }
-
-      scrollTimeoutRef.current = setTimeout(() => {
-        setIsScrolling(false);
-      }, 150); // Adjust delay to determine "stopped" scrolling
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-      if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current);
-    };
-  }, []);
 
 
   return (
     <>
       <div ref={containerRef} className="sm:flex hidden" />
       <AnimatePresence>
-        {isActive && !isScrolling && (
+        {isActive && (
           <motion.div
             className="sm:flex hidden transform-[translate(-50%,-50%)] sm:pointer-events-none fixed z-50"
             style={{
