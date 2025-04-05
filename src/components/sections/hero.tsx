@@ -54,14 +54,14 @@ export default function Hero({ id }: { id: string }) {
           <MouseParallaxChild
             factorX={1}
             factorY={1}
-            className="absolute top-1/2 -translate-y-1/2 left-0 w-full h-full object-contain"
+            className="absolute flex items-center top-1/2 -translate-y-1/2 left-0 w-full h-full object-cover md:object-contain"
           >
             <motion.video
-              src="https://cdn-cf-east.streamable.com/video/mp4/q1h9e4.mp4?Expires=1743849360&Signature=JScxdvqW9wo2NIIH3RzUvGsgKndSSg2b2WgaxqnS7GQseHxMGG-h6rodrRVywCUCg1a21aH7IT0NCrczIMpUQ85hc78VQHd~EV3h6wBOq0nGaGC8fs74bAvhv7dJqwQMParGywGXYPgCgR9uQNL4B8Ni0~iVnYvqbDaaFUz6NK7zfciget7Es5e4LGCqKd6sSawcXCKMRLORUDUe3uUfp6rRN1LbGTinj2LBHDm6D-9l-f2qSo2FyTk2KTCV-lCYeTh6bRcMilV1MDSua~RfkW3FiCmrtG5SAgIQA~li0JMP6iFjVMFNHlvb2qonWeaf2vnFiZCcgVsXxIZJeoEDUQ__&Key-Pair-Id=APKAIEYUVEN4EVB2OKEQ"
-              className="w-full h-full"
+              src="/hero.mp4"
+              className="w-full h-[55%] md:h-full md:object-contain object-cover"
               autoPlay
               animate={{ opacity: 1, scale: 1 }}
-              style={{ y: videoY }}
+              style={{ scale: 2, y: videoY }}
               muted
               loop
               playsInline

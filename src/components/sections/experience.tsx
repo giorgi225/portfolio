@@ -66,7 +66,7 @@ export default function Experience({ id }: { id: string }) {
             ref={titleRef}
             style={{ y, scale }} // ✅ Corrected: use 'y' instead of 'translateY'
             transition={{ duration: 0.8, ease: [0.6, 0.05, 0.01, 0.99] }}
-            className="hidden lg:flex text-2xl lg:text-3xl xl:text-4xl font-semibold"
+            className="hidden lg:flex text-2xl lg:text-3xl xl:text-4xl font-bold"
           >
             Working Experience{" "}
           </motion.h2>
@@ -75,15 +75,15 @@ export default function Experience({ id }: { id: string }) {
             whileInView={{ x: 0 }}
             transition={{ duration: 0.8, ease: [0.6, 0.05, 0.01, 0.99] }}
             viewport={{ once: true }}
-            className="lg:hidden flex text-2xl lg:text-3xl xl:text-4xl font-semibold"
+            className="lg:hidden flex text-2xl lg:text-3xl xl:text-4xl font-bold"
           >
             Working Experience{" "}
           </motion.h2>
 
           <motion.div
-            initial={{ opacity: 0, y: 250 }}
+            initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3, ease: "easeOut" }}
+            transition={{ duration: 1, ease: "easeOut" }}
             viewport={{ once: true }}
             className="w-full sm:bg-neutral sm:rounded-3xl divide-y divide-foreground/10 overflow-hidden"
           >

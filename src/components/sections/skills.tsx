@@ -34,11 +34,11 @@ export default function Skills() {
 
   return (
     <div className="relative w-full bg-black py-12 lg:py-24 overflow-hidden">
-      <div className="absolute top-1/2 -translate-y-1/2 left-0 w-full h-full object-contain">
+      <div className="absolute flex items-center top-1/2 -translate-y-1/2 left-0 w-full h-full object-cover md:object-contain">
         <motion.video
           ref={videoRef}
-          src="https://cdn-cf-east.streamable.com/video/mp4/q1h9e4.mp4?Expires=1743849360&Signature=JScxdvqW9wo2NIIH3RzUvGsgKndSSg2b2WgaxqnS7GQseHxMGG-h6rodrRVywCUCg1a21aH7IT0NCrczIMpUQ85hc78VQHd~EV3h6wBOq0nGaGC8fs74bAvhv7dJqwQMParGywGXYPgCgR9uQNL4B8Ni0~iVnYvqbDaaFUz6NK7zfciget7Es5e4LGCqKd6sSawcXCKMRLORUDUe3uUfp6rRN1LbGTinj2LBHDm6D-9l-f2qSo2FyTk2KTCV-lCYeTh6bRcMilV1MDSua~RfkW3FiCmrtG5SAgIQA~li0JMP6iFjVMFNHlvb2qonWeaf2vnFiZCcgVsXxIZJeoEDUQ__&Key-Pair-Id=APKAIEYUVEN4EVB2OKEQ"
-          className="w-full h-full"
+          src="/hero.mp4"
+          className="w-full h-[55%] md:h-full md:object-contain object-cover"
           autoPlay
           animate={{ opacity: 1, scale: 1 }}
           muted
@@ -69,7 +69,7 @@ export default function Skills() {
               duration: 0.6,
               ease: "easeOut",
             }} // Smooth animation
-            className="text-2xl lg:text-3xl xl:text-4xl font-semibold max-w-[456px] xl:max-w-[731px] text-neutral/70"
+            className="text-2xl lg:text-3xl xl:text-4xl font-bold max-w-[456px] xl:max-w-[731px] text-neutral/70"
           >
             The Core <span className="text-neutral">Technologies, Tools,</span>{" "}
             and <span className="text-neutral">Frameworks</span> I Work With
@@ -78,7 +78,7 @@ export default function Skills() {
             {skills.map((skill, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 20, scale: 0.8 }} // Start with slight opacity and scale down
+                initial={{ opacity: 0, y: -20, scale: 0.8 }} // Start with slight opacity and scale down
                 whileInView={{
                   opacity: 1,
                   y: 0,
@@ -86,8 +86,8 @@ export default function Skills() {
                 }} // Animate to full opacity, move to position, and scale up
                 viewport={{ once: true, amount: 0.5 }} // Trigger when 50% is in view
                 transition={{
-                  delay: index * 0.1, // Stagger animation for each skill
-                  duration: 0.5,
+                  delay: index * 0.02, // Stagger animation for each skill
+                  duration: 1,
                   ease: "easeOut",
                 }}
                 className="group relative w-full h-[100px] sm:h-[135px] xl:h-[175px] flex items-center  justify-center group"

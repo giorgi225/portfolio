@@ -37,7 +37,7 @@ export default function Works({ id }: { id: string }) {
             initial={{ x: -150, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ duration: 0.8 }}
-            className="text-2xl lg:text-3xl xl:text-4xl font-semibold"
+            className="text-2xl lg:text-3xl xl:text-4xl font-bold"
           >
             My Projects
           </motion.h2>

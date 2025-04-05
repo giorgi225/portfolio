@@ -30,14 +30,14 @@ export function Pointer({
   const [isActive, setIsActive] = useState<boolean>(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const [isMobile, setIsMobile] = useState(false);
-
+  const [isScrolling, setIsScrolling] = useState(false);
+  const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  
   useEffect(() => {
     const updateIsMobile = () => setIsMobile(window.innerWidth <= 768);
 
     // Set initial state
-    updateIsMobile();
-    console.log(window.innerWidth <= 768);
-    
+    updateIsMobile();    
     // Listen for window resize
     window.addEventListener("resize", updateIsMobile);
 
@@ -54,9 +54,10 @@ export function Pointer({
         }
         return;
       }
+
       if (parentElement) {
         // Add cursor-none to parent
-        parentElement.style.cursor = "none";
+        parentElement.style.cursor = isScrolling ? "pointer" : "none";
 
         // Add event listeners to parent
         const handleMouseMove = (e: MouseEvent) => {
@@ -84,13 +85,35 @@ export function Pointer({
         };
       }
     }
-  }, [x, y, isMobile]);
+  }, [x, y, isMobile, isScrolling]);
+
+  // Detect scroll activity
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolling(true);
+
+      if (scrollTimeoutRef.current) {
+        clearTimeout(scrollTimeoutRef.current);
+      }
+
+      scrollTimeoutRef.current = setTimeout(() => {
+        setIsScrolling(false);
+      }, 150); // Adjust delay to determine "stopped" scrolling
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current);
+    };
+  }, []);
+
 
   return (
     <>
       <div ref={containerRef} className="sm:flex hidden" />
       <AnimatePresence>
-        {isActive && (
+        {isActive && !isScrolling && (
           <motion.div
             className="sm:flex hidden transform-[translate(-50%,-50%)] sm:pointer-events-none fixed z-50"
             style={{

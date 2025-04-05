@@ -16,7 +16,8 @@ import { Menu01Icon, SmartPhone01Icon } from "hugeicons-react";
 import { Button } from "@/components/ui/button";
 import Container from "@/components/common/Container";
 import { usePathname, useRouter } from "next/navigation";
-import useIntersectionObserver from "@/hooks/observer";
+import useActiveSession from "@/hooks/useActiveSession";
+import Lenis from "lenis";
 
 const Logo = () => {
   return (
@@ -37,11 +38,13 @@ const Nav = ({
   setActiveTab,
   setIsScrollCompleted,
   className = "",
+  layoutId = "bubble",
 }: {
   activeTab: string;
   setActiveTab: (state: string) => void;
   setIsScrollCompleted: (state: boolean) => void;
   className?: string;
+  layoutId?: string;
 }) => {
   const pathname = usePathname();
   const router = useRouter();
@@ -77,8 +80,6 @@ const Nav = ({
         .querySelector(`[data-target="${target}"]`)
         ?.getBoundingClientRect().top ?? 0;
 
-    console.log(top);
-
     window.scrollBy(0, top - 150);
     router.push(`/#${target}`, {
       scroll: false,
@@ -110,17 +111,9 @@ const Nav = ({
 
             {activeTab === navItem && (
               <motion.span
-                layoutId="bubble"
+                layoutId={layoutId}
                 className="absolute inset-0 bg-black/5 rounded-full z-10"
-                transition={{ type: "spring", duration: 0.5 }}
-              ></motion.span>
-            )}
-
-            {hoveredTab === navItem && (
-              <motion.span
-                layoutId="hover"
-                className="absolute inset-0 bg-gray-50 rounded-full"
-                transition={{ type: "spring", duration: 0.5 }}
+                transition={{ type: "spring", duration: 0.2 }}
               ></motion.span>
             )}
           </li>
@@ -138,15 +131,11 @@ export default function Header() {
   const [isScrolled, setIsScrolled] = useState<boolean>(false);
   const [isScrollCompleted, setIsScrollCompleted] = useState(true); // Track if the scroll has completed
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
-  const activeSection = useIntersectionObserver([
-    "home",
-    "about",
-    "projects",
-    "blogs",
-  ]);
-
+  const activeSection = useActiveSession(
+    ["home", "about", "projects", "blogs"],
+    0.2
+  );
   useEffect(() => {
-    console.log(123);
 
     setIsScrollCompleted(false);
   }, [router]);
@@ -195,7 +184,7 @@ export default function Header() {
       top: "16px",
       opacity: 1,
       transition: {
-        duration: 0.5,
+        duration: 0.3,
         ease: "easeInOut",
       },
     },
@@ -220,7 +209,7 @@ export default function Header() {
       borderRadius: "999px",
       transition: {
         duration: 0,
-        delay: 0
+        delay: 0,
       },
     },
   };
@@ -266,6 +255,7 @@ export default function Header() {
               activeTab={activeTab}
               setActiveTab={setActiveTab}
               setIsScrollCompleted={setIsScrollCompleted}
+              layoutId="bubble-2"
             />
           </motion.div>
         )}

@@ -13,8 +13,6 @@ export default function Home() {
       <Hero id="home" />
       <div className="page-container">
         <AboutMe id="about" />
-        <Skills />
-        <Experience id="experience" />
         <Works id="projects" />
         <Blogs id="blogs" />
       </div>

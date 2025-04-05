@@ -6,6 +6,7 @@ import "@/app/globals.css";
 import Footer from "@/components/layout/footer";
 // Third-party
 import { Analytics } from "@vercel/analytics/react"
+import LenisProvider from "@/hooks/useLenis";
 
 // Fonts
 const mainFont = Sen({
@@ -32,6 +33,7 @@ export default function RootLayout({
         {children}
         <Footer />
         <Analytics />
+        <LenisProvider />
       </body>
     </html>
   );
