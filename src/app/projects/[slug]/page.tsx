@@ -3,9 +3,50 @@ import Gallery from "@/components/gallery/Gallery";
 import { Button } from "@/components/ui/button";
 import { projects } from "@/data/data";
 import { ArrowLeft03Icon, Link01Icon } from "hugeicons-react";
+import { Metadata } from "next";
 import { headers } from "next/headers";
 import Link from "next/link";
 import React from "react";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+
+  const projectData = projects.filter((project) => project.slug === slug)[0];
+  const cleanedDescription = projectData.blogDescription
+    .replace(/<\/?[^>]+(>|$)/g, "")
+    .trim();
+  return {
+    title: projectData.title2 + " | gigi shalamberidze",
+    description: `${cleanedDescription.slice(0, 160)}...`,
+    alternates: {
+      canonical: `https://yourwebsite.com/projects/${projectData.slug}`,
+    },
+    robots: "index, follow",
+    authors: {
+      name: "gigi shalamberidze",
+      url: "https://shalamberidze-gigi.vercel.app",
+    },
+    openGraph: {
+      type: "website",
+      title: projectData.title2 + " | gigi shalamberidze",
+      description: `${cleanedDescription.slice(0, 160)}...`,
+      images: `https://shalamberidze-gigi.vercel.app/${projectData.main_image}`,
+      url: `https://shalamberidze-gigi.vercel.app/${projectData.slug}`,
+      siteName: "Gigi Shalamberidze Porfolio",
+      locale: "en_US",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: projectData.title2 + " | gigi shalamberidze",
+      description: `${cleanedDescription.slice(0, 160)}...`,
+      images: `https://shalamberidze-gigi.vercel.app/${projectData.main_image}`,
+    },
+  };
+}
 
 export default async function page({
   params,
@@ -14,8 +55,12 @@ export default async function page({
 }) {
   const { slug } = await params;
   const projectData = projects.filter((project) => project.slug === slug)[0];
-  const isFromLocal = (await headers()).get("referer")?.includes("https://shalamberidze-gigi.vercel.app") ? true : false;
-  
+  const isFromLocal = (await headers())
+    .get("referer")
+    ?.includes("https://shalamberidze-gigi.vercel.app")
+    ? true
+    : false;
+
   if (!projectData) {
     return (
       <div className="w-full flex-1 h-[calc(100vh-150px)] flex items-center">
