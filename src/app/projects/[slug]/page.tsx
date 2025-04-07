@@ -23,7 +23,7 @@ export async function generateMetadata({
     title: projectData.title2 + " | gigi shalamberidze",
     description: `${cleanedDescription.slice(0, 160)}...`,
     alternates: {
-      canonical: `https://yourwebsite.com/projects/${projectData.slug}`,
+      canonical: `https://shalamberidze-gigi.vercel.app/projects/${projectData.slug}`,
     },
     robots: "index, follow",
     authors: {
@@ -34,8 +34,8 @@ export async function generateMetadata({
       type: "website",
       title: projectData.title2 + " | gigi shalamberidze",
       description: `${cleanedDescription.slice(0, 160)}...`,
-      images: `https://shalamberidze-gigi.vercel.app/${projectData.main_image}`,
-      url: `https://shalamberidze-gigi.vercel.app/${projectData.slug}`,
+      images: `https://shalamberidze-gigi.vercel.app${projectData.main_image}`,
+      url: `https://shalamberidze-gigi.vercel.app/projects/${projectData.slug}`,
       siteName: "Gigi Shalamberidze Porfolio",
       locale: "en_US",
     },
@@ -43,7 +43,7 @@ export async function generateMetadata({
       card: "summary_large_image",
       title: projectData.title2 + " | gigi shalamberidze",
       description: `${cleanedDescription.slice(0, 160)}...`,
-      images: `https://shalamberidze-gigi.vercel.app/${projectData.main_image}`,
+      images: `https://shalamberidze-gigi.vercel.app${projectData.main_image}`,
     },
   };
 }

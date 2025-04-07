@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   title: "gigi shalamberidze | portfolio website",
   description: `I’m a Web Developer with over 5 years of experience crafting high-performance web apps. I specialize in React, Next.js, and modern JavaScript, and have recently expanded my expertise into backend development with Node.js, Express, and MySQL/Prisma. I focus on building seamless user experiences while ensuring reliable and scalable backend systems`,
   alternates: {
-    canonical: `https://yourwebsite.com`,
+    canonical: `https://shalamberidze-gigi.vercel.app`,
   },
   robots: "index, follow",
   authors: {
