@@ -7,6 +7,7 @@ import Footer from "@/components/layout/footer";
 // Third-party
 import { Analytics } from "@vercel/analytics/react";
 import LenisProvider from "@/hooks/useLenis";
+import PageLoader from "@/components/pageLoader";
 
 // Fonts
 const mainFont = Sen({
@@ -29,6 +30,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${mainFont.className} antialiased`}>
+        <PageLoader />
         {children}
         <Footer />
         <Analytics />

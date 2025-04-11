@@ -11,13 +11,20 @@ import {
   useMotionValueEvent,
   useScroll,
 } from "framer-motion";
-import { Menu01Icon, SmartPhone01Icon } from "hugeicons-react";
+import {
+  Mail02Icon,
+  Menu01Icon,
+  SmartPhone01Icon,
+  SmartPhone03Icon,
+} from "hugeicons-react";
 // Components
 import { Button } from "@/components/ui/button";
 import Container from "@/components/common/Container";
 import { usePathname, useRouter } from "next/navigation";
 import useActiveSession from "@/hooks/useActiveSession";
 import Lenis from "lenis";
+import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
+import { ChevronDown } from "lucide-react";
 
 const Logo = () => {
   return (
@@ -232,12 +239,26 @@ export default function Header() {
           />
 
           <div className="flex-1 flex justify-end space-x-2">
-            <Button asChild variant="primary">
-              <Link href={`tel:+995574175188`}>
-                Call Me
-                <SmartPhone01Icon />
-              </Link>
-            </Button>
+            <Popover>
+              <PopoverTrigger asChild>
+                <Button asChild variant="primary">
+                    <span>
+                      Contact
+                      <ChevronDown />
+                    </span>
+                </Button>
+              </PopoverTrigger>
+              <PopoverContent className="bg-neutral border border-foreground/10 shadow-xl w-[180px] p-1 rounded-xl flex flex-col">
+                <Link href={`tel:+995574175188`} className="flex items-center gap-2 text-sm px-3 py-3 hover:bg-foreground hover:text-background transition-all duration-300 rounded-lg">
+                  <SmartPhone03Icon className="size-4" />
+                  Call Me 
+                </Link>
+                <Link href={`mailto:gigi.shalamberidze2022@gmail.com`} className="flex items-center gap-2 text-sm px-3 py-3 hover:bg-foreground hover:text-background transition-all duration-300 rounded-lg">
+                  <Mail02Icon className="size-4" />
+                  Send mail
+                </Link>
+              </PopoverContent>
+            </Popover>
           </div>
         </Container>
       </header>
@@ -250,7 +271,8 @@ export default function Header() {
             animate={["show_circle", "expanded_nav"]}
             transition={{ type: "spring" }}
             exit="exit"
-            className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[50px] h-[50px] overflow-hidden bg-background" style={{boxShadow: "0px 0px 20px #00000020"}}
+            className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[50px] h-[50px] overflow-hidden bg-background z-[99]"
+            style={{ boxShadow: "0px 0px 20px #00000020" }}
           >
             <Nav
               activeTab={activeTab}

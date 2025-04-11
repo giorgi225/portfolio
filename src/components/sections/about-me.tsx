@@ -2,12 +2,14 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Button } from "../ui/button";
-import { SmartPhone01Icon } from "hugeicons-react";
+import { Mail02Icon, SmartPhone01Icon, SmartPhone03Icon } from "hugeicons-react";
 import { useEffect, useRef, useState } from "react";
 import { MouseParallaxChild } from "react-parallax-mouse";
 import Link from "next/link";
 import Skills from "./skills";
 import Experience from "./experience";
+import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
+import { ChevronDown } from "lucide-react";
 
 export default function AboutMe({ id }: { id: string }) {
   const titleRef = useRef(null);
@@ -46,7 +48,9 @@ export default function AboutMe({ id }: { id: string }) {
           {/* Static Description */}
           <div className="flex flex-col gap-4 lg:gap-6">
             {[
-              `I’m a Web Developer with over ${new Date().getFullYear() - 2020} years of experience crafting high-performance web apps. I specialize in React, Next.js, and modern JavaScript, and have recently expanded my expertise into backend development with Node.js, Express, and MySQL/Prisma. I focus on building seamless user experiences while ensuring reliable and scalable backend systems.`,
+              `I’m a Web Developer with over ${
+                new Date().getFullYear() - 2020
+              } years of experience crafting high-performance web apps. I specialize in React, Next.js, and modern JavaScript, and have recently expanded my expertise into backend development with Node.js, Express, and MySQL/Prisma. I focus on building seamless user experiences while ensuring reliable and scalable backend systems.`,
               "I prioritize clean code, scalability, and security. I implement best practices like JWT, OAuth, and performance optimizations to ensure apps are fast, secure, and able to grow with your users. Let’s create something exceptional together!",
             ].map((text, i) => (
               <motion.p
@@ -71,12 +75,32 @@ export default function AboutMe({ id }: { id: string }) {
               transition={{ duration: 1, ease: [0.6, 0.05, 0.01, 0.99] }}
               viewport={{ once: true }}
             >
-              <Button asChild className="w-max" variant="primary">
-                <Link href={`tel:+995574175188`}>
-                  Call Me
-                  <SmartPhone01Icon />
-                </Link>
-              </Button>
+              <Popover defaultOpen={true}>
+                <PopoverTrigger asChild>
+                  <Button asChild variant="primary">
+                    <span>
+                      Contact
+                      <ChevronDown />
+                    </span>
+                  </Button>
+                </PopoverTrigger>
+                <PopoverContent className="bg-neutral border border-foreground/10 shadow-xl w-[180px] p-1 rounded-xl flex flex-col">
+                  <Link
+                    href={`tel:+995574175188`}
+                    className="flex items-center gap-2 text-sm px-3 py-3 hover:bg-foreground hover:text-background transition-all duration-300 rounded-lg"
+                  >
+                    <SmartPhone03Icon className="size-4" />
+                    Call Me
+                  </Link>
+                  <Link
+                    href={`mailto:gigi.shalamberidze2022@gmail.com`}
+                    className="flex items-center gap-2 text-sm px-3 py-3 hover:bg-foreground hover:text-background transition-all duration-300 rounded-lg"
+                  >
+                    <Mail02Icon className="size-4" />
+                    Send mail
+                  </Link>
+                </PopoverContent>
+              </Popover>
             </motion.div>
           </div>
         </div>
