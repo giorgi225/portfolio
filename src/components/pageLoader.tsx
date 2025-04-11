@@ -11,12 +11,12 @@ export default function PageLoader() {
     // Curtains will start sliding after 2s
     const revealTimer = setTimeout(() => {
       setStartReveal(true);
-    }, 2000);
+    }, 1000);
 
     // Entire loader removed from DOM after curtains slide
     const doneTimer = setTimeout(() => {
       setIsDone(true);
-    }, 3200);
+    }, 2200);
 
     return () => {
       clearTimeout(revealTimer);
