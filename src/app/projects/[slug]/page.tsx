@@ -19,6 +19,7 @@ export async function generateMetadata({
   const cleanedDescription = projectData.blogDescription
     .replace(/<\/?[^>]+(>|$)/g, "")
     .trim();
+    
   return {
     title: projectData.title2 + " | gigi shalamberidze",
     description: `${cleanedDescription.slice(0, 160)}...`,

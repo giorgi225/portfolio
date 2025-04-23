@@ -35,6 +35,7 @@ const Logo = () => {
         width={176}
         height={42}
         className="w-full max-w-[140px] lg:max-w-[176px]"
+        priority={true}
       />
     </Link>
   );
@@ -271,7 +272,7 @@ export default function Header() {
             animate={["show_circle", "expanded_nav"]}
             transition={{ type: "spring" }}
             exit="exit"
-            className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[50px] h-[50px] overflow-hidden bg-background z-[99]"
+            className="fixed top-4 left-1/2 -translate-x-1/2 w-[50px] h-[50px] overflow-hidden bg-background z-[99]"
             style={{ boxShadow: "0px 0px 20px #00000020" }}
           >
             <Nav

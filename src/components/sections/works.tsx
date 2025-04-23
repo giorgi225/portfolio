@@ -85,6 +85,7 @@ export default function Works({ id }: { id: string }) {
                         width={1000}
                         height={500}
                         priority={false}
+                        loading="lazy"
                         className="lg:scale-105 group-hover:scale-110 w-full h-full z-10 transition-all duration-300"
                       />
                     </MouseParallaxChild>

@@ -33,7 +33,7 @@ export default function Experience({ id }: { id: string }) {
       type: "contract",
       position: "Next.js Developer",
       company: "ImperialTours",
-      link: "https://imperialtours.com",
+      link: "https://imperialtours.ge",
       date_range: "2024 Jan - 2024 Apr",
       description:
         "Design and development of Imperial Tours, a tours website built under contract. Designed the UI and developed the React.js frontend, integrating it with the backend while collaborating with backend developers.",
