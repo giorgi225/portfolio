@@ -1,11 +1,10 @@
+import { Metadata } from "next";
+
 import Header from "@/components/layout/Header";
 import AboutMe from "@/components/sections/about-me";
 import Blogs from "@/components/sections/blogs";
-import Experience from "@/components/sections/experience";
 import Hero from "@/components/sections/hero";
-import Skills from "@/components/sections/skills";
 import Works from "@/components/sections/works";
-import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "gigi shalamberidze | portfolio website",

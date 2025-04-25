@@ -1,7 +1,7 @@
 // components/LenisProvider.tsx
 "use client";
-import { useEffect } from "react";
 import Lenis from "lenis";
+import { useEffect } from "react";
 
 const LenisProvider = () => {
   useEffect(() => {

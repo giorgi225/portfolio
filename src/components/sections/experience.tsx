@@ -1,12 +1,8 @@
 "use client";
 import { motion, useScroll, useTransform } from "framer-motion";
-import Image from "next/image";
 import Link from "next/link";
-import { useRef, useState } from "react";
-import {
-  MouseParallaxChild,
-  MouseParallaxContainer,
-} from "react-parallax-mouse";
+import { useRef} from "react";
+
 import { Pointer } from "../magicui/pointer";
 
 export default function Experience({ id }: { id: string }) {

@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import { useEffect, useState } from "react";
 
 export default function PageLoader() {
   const [startReveal, setStartReveal] = useState(false);

@@ -1,12 +1,14 @@
-import GoBackBtn from "@/components/btns/goBackBtn";
-import Gallery from "@/components/gallery/Gallery";
-import { Button } from "@/components/ui/button";
-import { projects } from "@/data/data";
 import { ArrowLeft03Icon, Link01Icon } from "hugeicons-react";
 import { Metadata } from "next";
 import { headers } from "next/headers";
 import Link from "next/link";
 import React from "react";
+
+import { projects } from "@/data/data";
+
+import GoBackBtn from "@/components/btns/goBackBtn";
+import Gallery from "@/components/gallery/Gallery";
+import { Button } from "@/components/ui/button";
 
 export async function generateMetadata({
   params,
@@ -70,7 +72,7 @@ export default async function page({
             <h1 className="text-3xl font-bold">Project Not Found</h1>
             <p className="max-w-[420px]">
               We couldn’t find the project details you’re looking for. It may
-              have been moved or doesn't exist.
+              have been moved or doesn&apos;t exist.
             </p>
             <Button variant={`primary`} className="w-max mx-auto mt-6" asChild>
               <Link href={`/#home`}>

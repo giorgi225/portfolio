@@ -14,10 +14,19 @@ const useActiveSection = (sectionIds: string[], threshold = 0.3) => {
 
       const observer = new IntersectionObserver(
         ([entry]) => {
-          setSections((prev: any) => {
-            return entry.isIntersecting
-              ? { ...prev, [id]: entry }
-              : { ...prev, [id]: undefined };
+          // setSections((prev: Record<string, IntersectionObserverEntry>) => {
+          //   return entry.isIntersecting
+          //     ? { ...prev, [id]: entry }
+          //     : { ...prev, [id]: undefined };
+          // });
+          setSections((prev: Record<string, IntersectionObserverEntry>) => {
+            const updated = { ...prev };
+            if (entry.isIntersecting) {
+              updated[id] = entry;
+            } else {
+              delete updated[id];
+            }
+            return updated;
           });
         },
         { threshold }
@@ -32,6 +41,7 @@ const useActiveSection = (sectionIds: string[], threshold = 0.3) => {
 
   useEffect(() => {
     const visibleEntries = Object.entries(sections)
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       .filter(([_, entry]) => entry && entry.isIntersecting)
       .map(([id, entry]) => ({ id, ratio: entry!.intersectionRatio }));
 
@@ -44,7 +54,7 @@ const useActiveSection = (sectionIds: string[], threshold = 0.3) => {
     if (mostVisible && mostVisible.id !== active) {
       setActive(mostVisible.id);
     }
-  }, [sections]);
+  }, [active, sections]);
 
   return active;
 };

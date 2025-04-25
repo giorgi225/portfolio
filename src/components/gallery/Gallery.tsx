@@ -1,13 +1,14 @@
 "use client";
-import Masonry from "react-masonry-css";
-import LightGallery from "lightgallery/react";
+import "./Gallery.css";
 import "lightgallery/css/lightgallery.css";
 import "lightgallery/css/lg-zoom.css";
 import "lightgallery/css/lg-thumbnail.css";
+
 import lgThumbnail from "lightgallery/plugins/thumbnail";
 import lgZoom from "lightgallery/plugins/zoom";
+import LightGallery from "lightgallery/react";
 import Image from "next/image";
-import "./Gallery.css"; // We'll create this file
+import Masonry from "react-masonry-css";
 
 const breakpointColumns = {
   default: 4,

@@ -1,15 +1,16 @@
 "use client";
 
 import { motion, useScroll, useTransform } from "framer-motion";
-import { Button } from "../ui/button";
-import { Mail02Icon, SmartPhone01Icon, SmartPhone03Icon } from "hugeicons-react";
-import { useEffect, useRef, useState } from "react";
-import { MouseParallaxChild } from "react-parallax-mouse";
-import Link from "next/link";
-import Skills from "./skills";
-import Experience from "./experience";
-import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
+import { Mail02Icon, SmartPhone03Icon } from "hugeicons-react";
 import { ChevronDown } from "lucide-react";
+import Link from "next/link";
+import { useRef} from "react";
+
+import Experience from "./experience";
+import Skills from "./skills";
+import { Button } from "../ui/button";
+import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
+
 
 export default function AboutMe({ id }: { id: string }) {
   const titleRef = useRef(null);

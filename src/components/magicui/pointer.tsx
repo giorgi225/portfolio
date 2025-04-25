@@ -1,6 +1,5 @@
 "use client";
 
-import { cn } from "@/lib/utils";
 import {
   AnimatePresence,
   HTMLMotionProps,
@@ -9,7 +8,9 @@ import {
 } from "motion/react";
 import { JSX, useEffect, useRef, useState } from "react";
 
-interface PointerProps extends Omit<HTMLMotionProps<"div">, "ref"> {}
+import { cn } from "@/lib/utils";
+
+type PointerProps = Omit<HTMLMotionProps<"div">, "ref">
 
 /**
  * A custom pointer component that displays an animated cursor.
@@ -30,7 +31,7 @@ export function Pointer({
   const [isActive, setIsActive] = useState<boolean>(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const [isMobile, setIsMobile] = useState(false);
-  const [isScrolling, setIsScrolling] = useState(false);
+  const [isScrolling] = useState(false);
 
   // check device based screen width
   useEffect(() => {

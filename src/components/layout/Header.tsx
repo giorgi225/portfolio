@@ -1,30 +1,28 @@
 "use client";
-// Next
-import Link from "next/link";
-import Image from "next/image";
-import { ChangeEvent, MouseEvent, useEffect, useRef, useState } from "react";
-// Third-party
 import {
   AnimatePresence,
   motion,
-  useAnimation,
   useMotionValueEvent,
   useScroll,
 } from "framer-motion";
 import {
   Mail02Icon,
-  Menu01Icon,
-  SmartPhone01Icon,
   SmartPhone03Icon,
 } from "hugeicons-react";
-// Components
-import { Button } from "@/components/ui/button";
-import Container from "@/components/common/Container";
-import { usePathname, useRouter } from "next/navigation";
-import useActiveSession from "@/hooks/useActiveSession";
-import Lenis from "lenis";
-import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 import { ChevronDown } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { MouseEvent, useEffect, useRef, useState } from "react";
+
+import useActiveSession from "@/hooks/useActiveSession";
+
+import Container from "@/components/common/Container";
+import { Button } from "@/components/ui/button";
+
+
+import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
+
 
 const Logo = () => {
   return (
@@ -54,11 +52,12 @@ const Nav = ({
   className?: string;
   layoutId?: string;
 }) => {
-  const pathname = usePathname();
   const router = useRouter();
   const navList = ["home", "about", "projects", "blogs"];
   const [hoveredTab, setHoveredTab] = useState<string | null>(null);
   const hoverTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  console.log(hoveredTab);
 
   const onMouseEnter = (target: string) => () => {
     if (hoverTimeoutRef.current) {
@@ -77,7 +76,7 @@ const Nav = ({
     }, 150);
   };
 
-  const onScroll = (e: any, target: string) => {
+  const onScroll = (e: MouseEvent<HTMLAnchorElement, globalThis.MouseEvent>, target: string) => {
     e.preventDefault();
 
     setActiveTab(target);
@@ -134,7 +133,6 @@ const Nav = ({
 export default function Header() {
   const { scrollY } = useScroll();
   const router = useRouter();
-  const pathname = usePathname();
   const [activeTab, setActiveTab] = useState("home");
   const [isScrolled, setIsScrolled] = useState<boolean>(false);
   const [isScrollCompleted, setIsScrollCompleted] = useState(true); // Track if the scroll has completed
@@ -152,7 +150,7 @@ export default function Header() {
       router.push(`/#${activeSection}`, { scroll: false });
       setActiveTab(activeSection); // Update active tab when section comes into view
     }
-  }, [activeSection, isScrollCompleted]);
+  }, [activeSection, isScrollCompleted, router]);
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     if (!isScrollCompleted) {
@@ -174,7 +172,7 @@ export default function Header() {
         clearTimeout(timeoutRef.current);
       }
     };
-  }, [isScrolled, isScrollCompleted]);
+  }, [isScrolled, isScrollCompleted, scrollY]);
 
   const variants = {
     hidden: {

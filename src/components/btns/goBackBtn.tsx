@@ -4,16 +4,25 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React from "react";
 
-const GoBackBtn = ({ text, isFromLocal }: { text: string, isFromLocal: boolean }) => {
+const GoBackBtn = ({
+  text,
+  isFromLocal,
+}: {
+  text: string;
+  isFromLocal: boolean;
+}) => {
   const router = useRouter();
-
 
   return (
     <Link
       href={`#`}
       onClick={(e) => {
         e.preventDefault();
-        isFromLocal ? router.back() : router.push("/");
+        if (isFromLocal) {
+          router.back();
+        } else {
+          router.push("/");
+        }
       }}
       className="flex items-center gap-2 hover:opacity-80 transition-all"
     >

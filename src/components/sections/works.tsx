@@ -1,34 +1,17 @@
 "use client";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { Button } from "../ui/button";
-import {
-  ArrowRight01Icon,
-  Loading01Icon,
-  Loading02Icon,
-  Loading03Icon,
-  ReloadIcon,
-  SmartPhone01Icon,
-} from "hugeicons-react";
-import { useRef, useState } from "react";
-import Link from "next/link";
+import { motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 import {
   MouseParallaxChild,
   MouseParallaxContainer,
 } from "react-parallax-mouse";
-import { Pointer } from "../magicui/pointer";
+
 import { projects } from "@/data/data";
 
+import { Pointer } from "../magicui/pointer";
+
 export default function Works({ id }: { id: string }) {
-  const [resetParallax, setResetParallax] = useState(0);
-
-  const titleRef = useRef(null);
-
-  const { scrollYProgress } = useScroll({
-    target: titleRef, // Track only while in view
-    offset: ["start end", "end start"], // Start at entering, stop at leaving
-  });
-
   return (
     <section className="container-main" data-target={id}>
       <div className="w-full flex flex-col gap-6">
@@ -47,7 +30,7 @@ export default function Works({ id }: { id: string }) {
             transition={{ duration: 0.8, delay: 0.1 }}
             className="text-sm lg:text-base font-medium leading-5 max-w-[451px]"
           >
-            I've worked on a variety of projects, from simple websites to
+            I&apos;ve worked on a variety of projects, from simple websites to
             complex web applications. Here are a few of my favorites.{" "}
           </motion.p>
         </div>

@@ -1,27 +1,14 @@
 "use client";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { Button } from "../ui/button";
+import { motion } from "framer-motion";
 import {
-  ArrowRight01Icon,
   Calendar01Icon,
-  SmartPhone01Icon,
 } from "hugeicons-react";
-import { useRef, useState } from "react";
-import Link from "next/link";
 import Image from "next/image";
-import {
-  MouseParallaxChild,
-  MouseParallaxContainer,
-} from "react-parallax-mouse";
+import Link from "next/link";
+
 import { Pointer } from "../magicui/pointer";
 
 export default function Blogs({ id }: { id: string }) {
-  const titleRef = useRef(null);
-
-  const { scrollYProgress } = useScroll({
-    target: titleRef, // Track only while in view
-    offset: ["start end", "end start"], // Start at entering, stop at leaving
-  });
 
   const blogs = [
     {

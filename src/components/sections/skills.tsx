@@ -1,12 +1,7 @@
 "use client";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
-import { useRef, useState } from "react";
-import {
-  MouseParallaxChild,
-  MouseParallaxContainer,
-} from "react-parallax-mouse";
-import { Pointer } from "../magicui/pointer";
+import { useRef } from "react";
 
 export default function Skills() {
   const videoRef = useRef<HTMLVideoElement | null>(null);

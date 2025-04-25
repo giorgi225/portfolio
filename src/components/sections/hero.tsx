@@ -1,32 +1,21 @@
 "use client";
+import { motion, useScroll, useTransform } from "framer-motion";
 import {
-  ArrowDown01Icon,
   ArrowDown02Icon,
-  Facebook01Icon,
   Facebook02Icon,
-  Github01Icon,
   GithubIcon,
   Linkedin02Icon,
 } from "hugeicons-react";
-import Image from "next/image";
 import Link from "next/link";
-import {
-  motion,
-  useMotionValueEvent,
-  useScroll,
-  useTransform,
-} from "framer-motion";
+import { useRef } from "react";
 import {
   MouseParallaxChild,
   MouseParallaxContainer,
 } from "react-parallax-mouse";
-import { useRef, useState } from "react";
-import { div } from "framer-motion/client";
 
 export default function Hero({ id }: { id: string }) {
-  const { scrollY, scrollYProgress } = useScroll();
-  const [isScrolled, setIsScrolled] = useState<boolean>(false);
-  const videoRef = useRef<any>(null);
+  const { scrollYProgress } = useScroll();
+  const videoRef = useRef<HTMLDivElement | null>(null);
 
   const { scrollYProgress: videoScrollYProgress } = useScroll({
     target: videoRef, // Track only while in view
@@ -35,10 +24,6 @@ export default function Hero({ id }: { id: string }) {
   const videoY = useTransform(videoScrollYProgress, [0, 1], [0, 600]); // Move up as scrolling
 
   const textY = useTransform(scrollYProgress, [0, 1], [0, -400]); // Move up as scrolling
-
-  useMotionValueEvent(scrollY, "change", (latest) => {
-    setIsScrolled(latest > 200);
-  });
 
   return (
     <section className="relative" data-target={id}>
@@ -93,9 +78,10 @@ export default function Hero({ id }: { id: string }) {
                   <span className="text-primary">WEB</span> Experiences
                 </h1>
                 <p className="text-xs sm:text-sm lg:text-base sm:px-0 px-4 font-medium leading-5 md:leading-auto lg:leading-6 text-neutral/80 text-center">
-                  I'm a Web Developer with {new Date().getFullYear() - 2020} years of frontend and {new Date().getFullYear() - 2024} years
-                  of backend expertise, focusing on Html, Css, Javascript, and
-                  React.js/Next.js.
+                  I&apos;m a Web Developer with{" "}
+                  {new Date().getFullYear() - 2020} years of frontend and{" "}
+                  {new Date().getFullYear() - 2024} years of backend expertise,
+                  focusing on Html, Css, Javascript, and React.js/Next.js.
                 </p>
               </div>
               <div className="flex items-center space-x-4 lg:space-x-6">

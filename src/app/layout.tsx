@@ -1,13 +1,14 @@
-// Next
-import type { Metadata } from "next";
-import { Sen } from "next/font/google";
-// Styles
 import "@/app/globals.css";
-import Footer from "@/components/layout/footer";
-// Third-party
+
 import { Analytics } from "@vercel/analytics/react";
+import { Sen } from "next/font/google";
+
 import LenisProvider from "@/hooks/useLenis";
+
+import Footer from "@/components/layout/footer";
 import PageLoader from "@/components/pageLoader";
+
+import type { Metadata } from "next";
 
 // Fonts
 const mainFont = Sen({
