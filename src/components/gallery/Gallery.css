@@ -1,28 +1,38 @@
 /* Masonry grid styles */
 .my-masonry-grid {
-    display: flex;
-    margin-left: -16px; /* gutter size offset */
-    width: auto;
-  }
-  
-  .my-masonry-grid_column {
-    padding-left: 16px; /* gutter size */
-    background-clip: padding-box;
-  }
-  
-  /* Style your items */
-  .gallery-item {
-    margin-bottom: 16px;
-    transition: transform 0.2s;
-  }
-  
-  .gallery-item:hover {
-    transform: scale(1.01);
-  }
-  
-  /* Optional: Different image heights for true masonry effect */
-  .gallery-item:nth-child(5n+1) { height: 250px; }
-  .gallery-item:nth-child(5n+2) { height: 320px; }
-  .gallery-item:nth-child(5n+3) { height: 280px; }
-  .gallery-item:nth-child(5n+4) { height: 300px; }
-  .gallery-item:nth-child(5n+5) { height: 200px; }
+  display: flex;
+  margin-left: -16px; /* gutter size offset */
+  width: auto;
+}
+
+.my-masonry-grid_column {
+  padding-left: 16px; /* gutter size */
+  background-clip: padding-box;
+}
+
+/* Style your items */
+.gallery-item {
+  margin-bottom: 16px;
+  transition: transform 0.2s;
+}
+
+.gallery-item:hover {
+  transform: scale(1.01);
+}
+
+/* Optional: Different image heights for true masonry effect */
+.gallery-item:nth-child(5n + 1) {
+  height: 250px;
+}
+.gallery-item:nth-child(5n + 2) {
+  height: 320px;
+}
+.gallery-item:nth-child(5n + 3) {
+  height: 280px;
+}
+.gallery-item:nth-child(5n + 4) {
+  height: 300px;
+}
+.gallery-item:nth-child(5n + 5) {
+  height: 200px;
+}

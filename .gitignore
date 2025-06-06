@@ -1,9 +1,5 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
-/src/app/(admin)/
-/src/app/api/
-/src/app/admin/
-
 # dependencies
 /node_modules
 /.pnp
