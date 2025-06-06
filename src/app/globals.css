@@ -47,3 +47,12 @@
 .blog ul {
   @apply pl-4 list-disc flex flex-col gap-2 mb-3 md:mb-4;
 }
+
+.page-loader {
+  background-image: linear-gradient(rgb(13, 18, 28) 60%, transparent 100%),
+    radial-gradient(#83e6f71d 1px, transparent 1px),
+    radial-gradient(#83e6f71d 1px, transparent 1px);
+  background-position: 0 0, 0 0, calc(20px / 2) calc(20px / 2);
+  background-size: 100% 100%, 20px 20px, 20px 20px;
+  background-color: rgb(13, 18, 28);
+}
