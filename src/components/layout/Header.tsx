@@ -240,7 +240,7 @@ export default function Header() {
           <div className="flex-1 flex justify-end space-x-2">
             <Popover>
               <PopoverTrigger asChild>
-                <Button asChild variant="primary">
+                <Button asChild variant="primary_gradient">
                     <span>
                       Contact
                       <ChevronDown />

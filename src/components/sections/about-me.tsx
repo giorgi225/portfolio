@@ -78,7 +78,7 @@ export default function AboutMe({ id }: { id: string }) {
             >
               <Popover defaultOpen={true}>
                 <PopoverTrigger asChild>
-                  <Button asChild variant="primary">
+                  <Button asChild variant="primary_gradient">
                     <span>
                       Contact
                       <ChevronDown />

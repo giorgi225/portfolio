@@ -11,6 +11,7 @@
   --color-primary: var(--primary);
   --animate-aurora: aurora 8s ease-in-out infinite alternate;
 }
+
 @keyframes aurora {
   0% {
     background-position: 0% 50%;
@@ -35,10 +36,11 @@
 }
 
 :root {
-  --background: #f9f9fa;
+  --background: #f4f3f0;
   --foreground: #1f1f1f;
   --neutral: #ffffff;
   --primary: #b6ef45;
+  --primary-gradient: 146deg, #8aff60, #bfff41;
 }
 
 @layer base {

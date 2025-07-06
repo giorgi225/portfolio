@@ -13,6 +13,8 @@ import {
   MouseParallaxContainer,
 } from "react-parallax-mouse";
 
+import Video from "../video";
+
 export default function Hero({ id }: { id: string }) {
   const { scrollYProgress } = useScroll();
   const videoRef = useRef<HTMLDivElement | null>(null);
@@ -41,22 +43,7 @@ export default function Hero({ id }: { id: string }) {
             factorY={1}
             className="absolute flex items-center top-1/2 -translate-y-1/2 left-0 w-full h-full object-cover md:object-contain"
           >
-            <motion.video
-              src="/hero.mp4"
-              className="w-full h-[55%] md:h-full md:object-contain object-cover"
-              autoPlay
-              animate={{ opacity: 1, scale: 1 }}
-              style={{ scale: 2, y: videoY }}
-              muted
-              loop
-              playsInline
-              initial={{ opacity: 0, scale: 0, y: 0 }} // Ensure initial y is 0
-              transition={{
-                duration: 1.5,
-                ease: [0.6, 0.05, 0.01, 0.99],
-                type: "spring",
-              }}
-            />
+            <Video y={videoY} />
           </MouseParallaxChild>
 
           <div className="absolute top-0 left-0 w-full h-full bg-black/50 flex">

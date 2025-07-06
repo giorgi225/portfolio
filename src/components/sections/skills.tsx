@@ -1,17 +1,7 @@
-"use client";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import Image from "next/image";
-import { useRef } from "react";
 
 export default function Skills() {
-  const videoRef = useRef<HTMLVideoElement | null>(null);
-  const { scrollYProgress } = useScroll({
-    target: videoRef, // Track only while in view
-    offset: ["start end", "end start"], // Start at entering, stop at leaving
-  });
-
-  const videoY = useTransform(scrollYProgress, [0, 1], [-500, 600]); // Move up as scrolling
-
   const currentYear = new Date().getFullYear();
   const skills = [
     {
@@ -107,28 +97,12 @@ export default function Skills() {
   ];
 
   return (
-    <div className="relative w-full bg-black py-12 lg:py-24 overflow-hidden">
-      <div className="absolute flex items-center top-1/2 -translate-y-1/2 left-0 w-full h-full object-cover md:object-contain">
-        <motion.video
-          ref={videoRef}
-          src="/hero.mp4"
-          className="w-full h-[55%] md:h-full md:object-contain object-cover"
-          autoPlay
-          animate={{ opacity: 1, scale: 1 }}
-          muted
-          loop
-          style={{ y: videoY }}
-          playsInline
-          initial={{ opacity: 0, scale: 0 }}
-          transition={{
-            duration: 1.5,
-            ease: [0.6, 0.05, 0.01, 0.99],
-            type: "spring",
-          }}
-        />
-      </div>
-      <div className="absolute top-0 left-0 w-full h-full bg-black/60 backdrop-blur-sm z-10 flex"></div>
-
+    <div
+      className="relative w-full py-12 lg:py-24 overflow-hidden"
+      style={{
+        background: "linear-gradient(96deg, #000000, #1e1e24, #000000)",
+      }}
+    >
       <div className="container-main z-10 relative">
         <div className="w-full flex flex-col gap-8">
           <motion.h2

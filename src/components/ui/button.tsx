@@ -13,6 +13,7 @@ const buttonVariants = cva(
         ghost: "bg-transparent text-foreground hover:bg-foreground/5",
         primary:
           "bg-primary text-foreground hover:bg-primary/90",
+        primary_gradient: "bg-[linear-gradient(var(--primary-gradient))] shadow-xl shadow-primary/30 text-foreground hover:opacity-80"
       },
       size: {
         default: "h-10 px-3 lg:px-4 py-2 lg:py-3",
@@ -24,6 +25,7 @@ const buttonVariants = cva(
     },
   }
 );
+
 
 function Button({
   className,

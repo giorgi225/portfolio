@@ -35,13 +35,14 @@ export default function Works({ id }: { id: string }) {
           </motion.p>
         </div>
 
-        <div className="w-full grid sm:grid-cols-2 gap-x-4 lg:gap-x-6 gap-y-9">
+        <div className="w-full flex flex-nowrap snap-start snap-x overflow-auto md:grid md:grid-cols-2 gap-x-4 lg:gap-x-6 gap-y-9">
           {projects.map((project, index) => (
             <MouseParallaxContainer
               resetOnLeave
               globalFactorX={0.1}
               globalFactorY={0.1}
               key={index}
+              className="flex-1 min-w-[calc(100%/1.2)]"
             >
               <motion.div
                 initial={{ y: 50 }}
@@ -58,7 +59,7 @@ export default function Works({ id }: { id: string }) {
                   className="relative group flex flex-col gap-2 lg:gap-4"
                 >
                   <div
-                    className="relative rounded-3xl overflow-hidden bg-gray-200"
+                    className="relative rounded-4xl overflow-hidden bg-gray-200"
                     style={{ aspectRatio: 628 / 471 }}
                   >
                     <MouseParallaxChild factorX={0.5} factorY={0.5}>

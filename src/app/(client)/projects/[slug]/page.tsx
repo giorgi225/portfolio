@@ -16,7 +16,6 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-
   const projectData = projects.filter((project) => project.slug === slug)[0];
   const cleanedDescription = projectData.blogDescription
     .replace(/<\/?[^>]+(>|$)/g, "")
@@ -62,7 +61,7 @@ export default async function page({
     .get("referer")
     ?.includes("https://shalamberidze-gigi.vercel.app")
     ? true
-    : false;
+    : false;    
 
   if (!projectData) {
     return (
@@ -75,10 +74,8 @@ export default async function page({
               have been moved or doesn&apos;t exist.
             </p>
             <Button variant={`primary`} className="w-max mx-auto mt-6" asChild>
-              <Link href={`/#home`}>
                 <ArrowLeft03Icon />
                 Back to Home
-              </Link>
             </Button>
           </div>
         </div>

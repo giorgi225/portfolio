@@ -1,9 +1,10 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 const useActiveSection = (sectionIds: string[], threshold = 0.3) => {
   const [active, setActive] = useState<string | null>(null);
-  const [sections, setSections] = useState<Record<string, IntersectionObserverEntry>>({});
+  const sectionsRef = useRef<Record<string, IntersectionObserverEntry>>({});
+  const activeRef = useRef<string | null>(null);
 
   useEffect(() => {
     const observers: IntersectionObserver[] = [];
@@ -14,20 +15,29 @@ const useActiveSection = (sectionIds: string[], threshold = 0.3) => {
 
       const observer = new IntersectionObserver(
         ([entry]) => {
-          // setSections((prev: Record<string, IntersectionObserverEntry>) => {
-          //   return entry.isIntersecting
-          //     ? { ...prev, [id]: entry }
-          //     : { ...prev, [id]: undefined };
-          // });
-          setSections((prev: Record<string, IntersectionObserverEntry>) => {
-            const updated = { ...prev };
-            if (entry.isIntersecting) {
-              updated[id] = entry;
-            } else {
-              delete updated[id];
-            }
-            return updated;
-          });
+          // Update the ref without causing a re-render
+          if (entry.isIntersecting) {
+            sectionsRef.current[id] = entry;
+          } else {
+            delete sectionsRef.current[id];
+          }
+
+          // Calculate the most visible section
+          const visibleEntries = Object.entries(sectionsRef.current)
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars
+            .filter(([_, e]) => e.isIntersecting)
+            .map(([id, entry]) => ({ id, ratio: entry.intersectionRatio }));
+
+          if (!visibleEntries.length) return;
+
+          visibleEntries.sort((a, b) => b.ratio - a.ratio);
+          const mostVisible = visibleEntries[0]?.id;
+
+          // Only update state if there's a change
+          if (mostVisible && mostVisible !== activeRef.current) {
+            activeRef.current = mostVisible;
+            setActive(mostVisible);
+          }
         },
         { threshold }
       );
@@ -38,23 +48,6 @@ const useActiveSection = (sectionIds: string[], threshold = 0.3) => {
 
     return () => observers.forEach((o) => o.disconnect());
   }, [sectionIds, threshold]);
-
-  useEffect(() => {
-    const visibleEntries = Object.entries(sections)
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      .filter(([_, entry]) => entry && entry.isIntersecting)
-      .map(([id, entry]) => ({ id, ratio: entry!.intersectionRatio }));
-
-    if (!visibleEntries.length) return;
-
-    // Sort by intersection ratio (most visible first)
-    visibleEntries.sort((a, b) => b.ratio - a.ratio);
-
-    const mostVisible = visibleEntries[0];
-    if (mostVisible && mostVisible.id !== active) {
-      setActive(mostVisible.id);
-    }
-  }, [active, sections]);
 
   return active;
 };
