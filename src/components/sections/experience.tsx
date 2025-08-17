@@ -47,7 +47,7 @@ export default function Experience({ id }: { id: string }) {
       type: "Full-time",
       position: "Front-end Developer",
       company: "LLC Trade Holding",
-      link: "https://viptrade.com",
+      link: "https://viptrade.ge",
       date_range: "2021 Apr - 2022 Oct",
       description:
         "Front-end development for LLC Trade Holding, where I started my career. Built CRM systems using HTML, CSS, and JavaScript, collaborating closely with designers and backend developers.",
