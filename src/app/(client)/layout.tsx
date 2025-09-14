@@ -18,6 +18,9 @@ const mainFont = Sen({
 
 // Metas
 export const metadata: Metadata = {
+  verification: {
+    google: "S0X9213EqQqJc78NFb8uv_07hnoOCONIa0Nw29cRw_Y"
+  },
   other: {
     theme: "#b6ef45",
   },
