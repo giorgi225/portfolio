@@ -5,18 +5,17 @@ import * as React from "react";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-2xl text-xs lg:text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive cursor-pointer",
+  "inline-flex items-center justify-center gap-1.5 whitespace-nowrap rounded-2xl text-sm font-semibold transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive cursor-pointer",
   {
     variants: {
       variant: {
         default: "",
         ghost: "bg-transparent text-foreground hover:bg-foreground/5",
-        primary:
-          "bg-primary text-foreground hover:bg-primary/90",
-        primary_gradient: "bg-[linear-gradient(var(--primary-gradient))] shadow-xl shadow-primary/30 text-foreground hover:opacity-80"
+        primary:"bg-primary text-neutral hover:bg-primary/90",
+        primary_gradient: "bg-[linear-gradient(var(--primary-gradient))] shadow-xl shadow-primary/30 text-neutral hover:opacity-80"
       },
       size: {
-        default: "h-10 px-3 lg:px-4 py-2 lg:py-3",
+        default: "h-12 px-5 py-2",
       },
     },
     defaultVariants: {

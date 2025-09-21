@@ -9,7 +9,7 @@ import {
 
 import { projects } from "@/data/data";
 
-import { Pointer } from "../magicui/pointer";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "../ui/carousel";
 
 export default function Works({ id }: { id: string }) {
   return (
@@ -53,64 +53,62 @@ export default function Works({ id }: { id: string }) {
                   delay: index * 0.05,
                   ease: "easeOut",
                 }}
+                className="flex flex-col gap-4"
               >
-                <Link
-                  href={`/projects/${project.slug}`}
-                  className="relative group flex flex-col gap-2 lg:gap-4"
-                >
-                  <div
-                    className="relative rounded-4xl overflow-hidden bg-gray-200"
-                    style={{ aspectRatio: 628 / 471 }}
-                  >
-                    <MouseParallaxChild factorX={0.5} factorY={0.5}>
-                      <Image
-                        src={project.main_image}
-                        alt={project.slug}
-                        width={1000}
-                        height={500}
-                        priority={false}
-                        loading="lazy"
-                        className="lg:scale-105 group-hover:scale-110 w-full h-full z-10 transition-all duration-300"
-                      />
-                    </MouseParallaxChild>
-                    {/* Overlay Effects */}
-                    <div className="absolute top-0 left-0 w-full h-full bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    <div className="absolute -top-4 right-4 opacity-0 group-hover:top-4 group-hover:opacity-100 transition-all duration-500">
-                      <div className="flex items-center justify-end flex-wrap gap-2 lg:gap-3">
-                        {project.keywords.slice(0, 3).map((keyword) => (
-                          <span
-                            key={keyword}
-                            className="text-nowrap text-xs lg:text-sm px-3 py-1.5 rounded-full bg-neutral text-foreground"
+                <Carousel className="group/parent">
+                  <CarouselContent>
+                    {project.images.map((image, index) => (
+                      <CarouselItem key={index}>
+                        <Link
+                          href={`/projects/${project.slug}`}
+                          className="relative group flex flex-col gap-2 lg:gap-4"
+                        >
+                          <div
+                            className="relative rounded-4xl overflow-hidden bg-gray-200"
+                            style={{ aspectRatio: 628 / 471 }}
                           >
-                            {keyword}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                    {/* Pointer Effect */}
-                    <Pointer>
-                      <motion.div
-                        initial={{ scale: 0 }}
-                        animate={{ scale: 1 }}
-                        transition={{ duration: 0.3, ease: "easeOut" }}
-                        className="text-neutral border border-neutral/20 flex items-center justify-center w-24 h-24 rounded-full bg-white/10 backdrop-blur-sm "
-                      >
-                        <motion.span className="text-sm text-nowrap font-medium items-center gap-2">
-                          See Project
-                        </motion.span>
-                      </motion.div>
-                    </Pointer>
-                  </div>
-                  {/* Project Info */}
-                  <div className="flex flex-col lg:gap-1 px-4">
-                    <h4 className="text-base lg:text-xl font-bold">
-                      {project.title}
-                    </h4>
-                    <p className="text-sm lg:text-base font-normal leading-5">
-                      {project.description}
-                    </p>
-                  </div>
-                </Link>
+                            <MouseParallaxChild factorX={0.5} factorY={0.5}>
+                              <Image
+                                src={image}
+                                alt={project.slug}
+                                width={1000}
+                                height={500}
+                                priority={false}
+                                loading="lazy"
+                                className="lg:scale-105 group-hover:scale-110 w-full h-full z-10 transition-all duration-300"
+                              />
+                            </MouseParallaxChild>
+                            {/* Overlay Effects */}
+                            <div className="absolute top-0 left-0 w-full h-full bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                            <div className="absolute -top-4 right-4 opacity-0 group-hover:top-4 group-hover:opacity-100 transition-all duration-500">
+                              <div className="flex items-center justify-end flex-wrap gap-2 lg:gap-3">
+                                {project.keywords.slice(0, 3).map((keyword) => (
+                                  <span
+                                    key={keyword}
+                                    className="text-nowrap text-xs lg:text-sm px-3 py-1.5 rounded-full bg-neutral text-foreground"
+                                  >
+                                    {keyword}
+                                  </span>
+                                ))}
+                              </div>
+                            </div>
+                          </div>
+                        </Link>
+                      </CarouselItem>
+                    ))}
+                  </CarouselContent>
+                  <CarouselPrevious className="disabled:opacity-0 group-hover/parent:opacity-100 -translate-x-4 group-hover/parent:translate-x-4 opacity-0 text-foreground bg-background h-10 w-10 left-4 transition-all duration-400"/>
+                  <CarouselNext className="disabled:opacity-0 group-hover/parent:opacity-100 translate-x-4 group-hover/parent:-translate-x-4 opacity-0 text-foreground bg-background h-10 w-10 right-4 transition-all duration-400"/>
+                </Carousel>
+                {/* Project Info */}
+                <div className="flex flex-col lg:gap-1 px-4">
+                  <h4 className="text-base lg:text-xl font-bold">
+                    {project.title}
+                  </h4>
+                  <p className="text-sm lg:text-base font-normal leading-5">
+                    {project.description}
+                  </p>
+                </div>
               </motion.div>
             </MouseParallaxContainer>
           ))}

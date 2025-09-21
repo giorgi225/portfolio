@@ -5,10 +5,7 @@ import {
   useMotionValueEvent,
   useScroll,
 } from "framer-motion";
-import {
-  Mail02Icon,
-  SmartPhone03Icon,
-} from "hugeicons-react";
+import { Mail02Icon, SmartPhone03Icon } from "hugeicons-react";
 import { ChevronDown } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -20,9 +17,7 @@ import useActiveSession from "@/hooks/useActiveSession";
 import Container from "@/components/common/Container";
 import { Button } from "@/components/ui/button";
 
-
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
-
 
 const Logo = () => {
   return (
@@ -76,7 +71,10 @@ const Nav = ({
     }, 150);
   };
 
-  const onScroll = (e: MouseEvent<HTMLAnchorElement, globalThis.MouseEvent>, target: string) => {
+  const onScroll = (
+    e: MouseEvent<HTMLAnchorElement, globalThis.MouseEvent>,
+    target: string
+  ) => {
     e.preventDefault();
 
     setActiveTab(target);
@@ -240,19 +238,23 @@ export default function Header() {
           <div className="flex-1 flex justify-end space-x-2">
             <Popover>
               <PopoverTrigger asChild>
-                <Button asChild variant="primary_gradient">
-                    <span>
-                      Contact
-                      <ChevronDown />
-                    </span>
+                <Button variant="primary_gradient">
+                  Contact
+                  <ChevronDown className="size-4" />
                 </Button>
               </PopoverTrigger>
               <PopoverContent className="bg-neutral border border-foreground/10 shadow-xl w-[180px] p-1 rounded-xl flex flex-col">
-                <Link href={`tel:+995574175188`} className="flex items-center gap-2 text-sm px-3 py-3 hover:bg-foreground hover:text-background transition-all duration-300 rounded-lg">
+                <Link
+                  href={`tel:+995574175188`}
+                  className="flex items-center gap-2 text-sm px-3 py-3 hover:bg-foreground hover:text-background transition-all duration-300 rounded-lg"
+                >
                   <SmartPhone03Icon className="size-4" />
-                  Call Me 
+                  Call Me
                 </Link>
-                <Link href={`mailto:gigi.shalamberidze2022@gmail.com`} className="flex items-center gap-2 text-sm px-3 py-3 hover:bg-foreground hover:text-background transition-all duration-300 rounded-lg">
+                <Link
+                  href={`mailto:gigi.shalamberidze2022@gmail.com`}
+                  className="flex items-center gap-2 text-sm px-3 py-3 hover:bg-foreground hover:text-background transition-all duration-300 rounded-lg"
+                >
                   <Mail02Icon className="size-4" />
                   Send mail
                 </Link>

@@ -99,8 +99,8 @@ export default function Hero({ id }: { id: string }) {
         </div>
       </MouseParallaxContainer>
       <div className="absolute w-[50px] lg:w-[70px] h-[50px] lg:h-[70px] rounded-full bg-background p-1 lg:p-2 z-10 -bottom-6 lg:-bottom-8 left-1/2 -translate-x-1/2">
-        <div className="flex items-center justify-center w-full h-full rounded-full bg-primary">
-          <ArrowDown02Icon className="!size-6" />
+        <div className="flex items-center justify-center w-full h-full rounded-full bg-primary outline-2 outline-primary text-neutral">
+          <ArrowDown02Icon className="!size-6  animate-bounce mt-2" />
         </div>
       </div>
     </section>
