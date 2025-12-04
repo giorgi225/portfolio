@@ -1,5 +1,64 @@
 export const projects = [
   {
+    main_image: "/projects/goodfriends1.png",
+    link: "https://new.goodfriendsgaming.com", 
+    images: [
+      "/projects/goodfriends1.png",
+      "/projects/goodfriends2.png",
+      "/projects/goodfriends3.png",
+    ],
+    title: "GoodFriends",
+    title2: "GoodFriends – Casino Management SaaS Platform",
+    slug: "goodfriends",
+    description:
+      "A modern and scalable casino management SaaS platform built with Next.js, featuring real-time systems, modular architecture, and an advanced agency dashboard.",
+    blogDescription: `
+      <p>GoodFriends is a <strong>full-scale casino management SaaS platform</strong> used by multiple partner companies to manage players, track revenue, operate slot machines, and handle agency-based gambling structures. I was responsible for the <strong>entire frontend architecture</strong>, UI engineering, performance optimization, and all client-side modules. I also contributed to backend chat and real-time messaging features.</p>
+  
+      <h6>Project Overview:</h6>
+      <p>The system includes modules for <strong>casino operations, agency management, multi-company support, affiliate payouts, real-time sessions</strong>, and a complete <strong>analytics dashboard</strong>. Built for performance, scalability, and daily high-volume usage.</p>
+  
+      <h6>My Responsibilities & Contribution:</h6>
+      <ul>
+        <li><strong>Frontend Architecture:</strong> Fully planned and built the frontend using <strong>Next.js, TypeScript, Tailwind CSS, and Shadcn UI</strong>.</li>
+        <li><strong>State Management:</strong> Structured global state using <strong>Zustand</strong> with optimized selectors, slices, and persistent stores.</li>
+        <li><strong>Real-Time Systems:</strong> Implemented a <strong>real-time chat system</strong> used by casino staff and agencies (Next.js + NestJS + WebSockets).</li>
+        <li><strong>Complex UI Modules:</strong> Created reusable components, tables, filters, dashboards, and admin panels used across multiple tenants.</li>
+        <li><strong>Performance Optimization:</strong> Used <strong>lazy-loading, caching, React Server Components</strong>, and optimized rendering for large datasets.</li>
+        <li><strong>Design System:</strong> Built a clean, scalable design system with <strong>Shadcn UI + Tailwind</strong>.</li>
+      </ul>
+  
+      <h6>Core Features Implemented:</h6>
+      <ul>
+        <li><strong>Multi-company SaaS support</strong> (each casino partner has its own dashboard and data)</li>
+        <li><strong>Casino player management</strong> with detailed session tracking</li>
+        <li><strong>Agency management</strong> (sub-agents, commissions, hierarchies)</li>
+        <li><strong>Real-time chat</strong> integrated with NestJS WebSocket backend</li>
+        <li><strong>Analytics dashboards</strong> with revenue, users, RTP, and session data</li>
+        <li><strong>Fully modular architecture</strong> for adding new casino modules quickly</li>
+      </ul>
+  
+      <h6>Impact:</h6>
+      <ul>
+        <li>The platform is now used by <strong>multiple casino companies</strong> as a commercial SaaS product.</li>
+        <li>Real-time chat improved support efficiency by <strong>over 30%</strong>.</li>
+        <li>New UI/UX increased staff productivity and reduced management time.</li>
+      </ul>
+  
+      <p>This project showcases my ability to build <strong>enterprise-grade platforms</strong> with scalable architecture, real-time systems, and high-quality UI engineering.</p>
+    `,
+    keywords: ["SaaS", "Casino Management", "Real-time Chat", "Dashboard", "Frontend Architecture"],
+    tools: [
+      "Next.js",
+      "Typescript",
+      "Tailwind CSS",
+      "Shadcn UI",
+      "Zustand",
+      "Nest.js (Chat Backend)",
+      "WebSockets"
+    ],
+  },
+  {
     main_image: "/projects/imperialtours.png",
     link: "https://imperialtours.ge",
     images: [
