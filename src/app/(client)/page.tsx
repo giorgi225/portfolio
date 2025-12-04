@@ -78,7 +78,6 @@ export default function Home() {
     ],
   };
 
-  // JSON-LD wrapper
   const jsonLd = {
     "@context": "https://schema.org",
     ...personSchema,

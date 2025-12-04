@@ -137,7 +137,7 @@ export default function Header() {
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   const activeSection = useActiveSession(
     ["home", "about", "projects", "blogs"],
-    0.2
+    0.3
   );
   useEffect(() => {
     setIsScrollCompleted(false);

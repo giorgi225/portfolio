@@ -3,7 +3,7 @@ import { motion, MotionValue } from "framer-motion";
 export default function Video({ y }: { y: MotionValue<number> }) {
   return (
     <motion.video
-      src="/hero.mp4"
+      src="/moon.mp4"
       className="w-full h-[55%] md:h-full md:object-contain object-cover"
       autoPlay
       preload="none"
