@@ -16,8 +16,8 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "../ui/carousel";
-import Section from "../common/section";
-import Container from "../common/container";
+import Section from "@/components/common/section";
+import Container from "@/components/common/container";
 
 export default function Works({ id }: { id: string }) {
   return (
