@@ -1,8 +1,8 @@
 "use client";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import Container from "../common/container";
-import Section from "../common/section";
+import Container from "@/components/common/container";
+import Section from "@/components/common/section";
 
 export default function Skills() {
   const currentYear = new Date().getFullYear();

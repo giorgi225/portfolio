@@ -4,9 +4,9 @@ import { Calendar01Icon } from "hugeicons-react";
 import Image from "next/image";
 import Link from "next/link";
 
-import { Pointer } from "../magicui/pointer";
-import Section from "../common/section";
-import Container from "../common/container";
+import { Pointer } from "@/components/magicui/pointer";
+import Section from "@/components/common/section";
+import Container from "@/components/common/container";
 
 export default function Blogs({ id }: { id: string }) {
   const blogs = [
