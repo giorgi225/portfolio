@@ -14,9 +14,9 @@ import { MouseEvent, useEffect, useRef, useState } from "react";
 
 import useActiveSession from "@/hooks/useActiveSession";
 
-import Container from "@/components/common/Container";
 import { Button } from "@/components/ui/button";
 
+import Container from "../common/container";
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 
 const Logo = () => {
@@ -51,8 +51,6 @@ const Nav = ({
   const navList = ["home", "about", "projects", "blogs"];
   const [hoveredTab, setHoveredTab] = useState<string | null>(null);
   const hoverTimeoutRef = useRef<NodeJS.Timeout | null>(null);
-
-  console.log(hoveredTab);
 
   const onMouseEnter = (target: string) => () => {
     if (hoverTimeoutRef.current) {
@@ -222,7 +220,7 @@ export default function Header() {
   return (
     <>
       <header className="py-4">
-        <Container className="items-center">
+        <Container className="flex items-center">
           <div className="flex flex-1 items-center space-x-3 lg:space-x-4">
             <span className="w-[10px] h-[10px] rounded-full bg-primary"></span>
             <Logo />

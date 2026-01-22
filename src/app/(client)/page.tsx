@@ -4,8 +4,9 @@ import { Person } from "schema-dts";
 import Header from "@/components/layout/Header";
 import AboutMe from "@/components/sections/about-me";
 import Blogs from "@/components/sections/blogs";
-import Hero from "@/components/sections/hero";
 import Works from "@/components/sections/works";
+import Header2 from "@/components/layout/header2";
+import Skills from "@/components/sections/skills";
 
 export const metadata: Metadata = {
   title: "gigi shalamberidze | React.js Developer",
@@ -85,13 +86,11 @@ export default function Home() {
 
   return (
     <>
-      <Header />
-      <Hero id="home" />
-      <div className="page-container">
-        <AboutMe id="about" />
-        <Works id="projects" />
-        <Blogs id="blogs" />
-      </div>
+      <Header2 />
+      <AboutMe />
+      <Skills />
+      <Works id="projects" />
+      <Blogs id="blogs" />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

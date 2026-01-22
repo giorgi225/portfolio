@@ -1,15 +1,14 @@
 "use client";
 import { motion } from "framer-motion";
-import {
-  Calendar01Icon,
-} from "hugeicons-react";
+import { Calendar01Icon } from "hugeicons-react";
 import Image from "next/image";
 import Link from "next/link";
 
 import { Pointer } from "../magicui/pointer";
+import Section from "../common/section";
+import Container from "../common/container";
 
 export default function Blogs({ id }: { id: string }) {
-
   const blogs = [
     {
       src: "/blogs/jwt.svg",
@@ -25,14 +24,18 @@ export default function Blogs({ id }: { id: string }) {
   ];
 
   return (
-    <section className="container-main" data-target={id}>
-      <div className="w-full flex flex-col items-center gap-6 lg:gap-12">
-        <div className="flex flex-col items-center gap-2">
+    <Section data-target={id} className="pt-[6vmax] pb-[16vmax]">
+      <Container className="w-full flex flex-col items-center gap-[6vmax]">
+        <div className="flex flex-col items-center gap-[1vmax]">
           <motion.h2
             initial={{ y: -150, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8 }}
-            className="text-2xl lg:text-3xl xl:text-4xl font-semibold text-center"
+            style={{
+              fontSize: "max(1.6rem, 2.5vmax)",
+              lineHeight: "115%",
+            }}
+            className="font-medium"
           >
             Lastest Blogs
           </motion.h2>
@@ -40,7 +43,8 @@ export default function Blogs({ id }: { id: string }) {
             initial={{ y: -150, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.1 }}
-            className="text-sm lg:text-base text-center font-medium leading-5 max-w-[360px] lg:max-w-[451px]"
+            className="md:max-w-[30vmax] text-foreground/80 text-center"
+            style={{ fontSize: "max(0.9rem, 1vmax)" }}
           >
             I share valuable tips and insights on various topics. Check out my
             latest blogs.
@@ -54,7 +58,7 @@ export default function Blogs({ id }: { id: string }) {
               href={blog.link}
               target="_blank"
               aria-label={`view blog: ${blog.title}`}
-              className="grid sm:grid-cols-[260px_auto] lg:grid-cols-[345px_auto] items-center gap-8 min-h-[236px] lg:min-h-[278px]"
+              className="grid sm:grid-cols-[260px_auto] lg:grid-cols-[345px_auto] items-center gap-[4vmax] min-h-[236px] lg:min-h-[278px]"
             >
               <Image
                 src={blog.src}
@@ -63,15 +67,21 @@ export default function Blogs({ id }: { id: string }) {
                 height={258}
                 className="w-full h-full object-cover object-center rounded-3xl overflow-hidden"
               />
-              <div className="w-full flex flex-col gap-3 px-4 sm:px-0">
+              <div className="w-full flex flex-col gap-[1.5vmax] px-[1.5vmax]">
                 <div className="flex items-center gap-2 text-foreground/70">
                   <Calendar01Icon className="size-4" />
                   <span className="text-sm lg:tex-base">Date: {blog.date}</span>
                 </div>
-                <h5 className="text-lg lg:text-2xl font-bold leading-6 lg:leading-8 line-clamp-2">
+                <h5
+                  style={{ fontSize: "max(1.5rem, 1.5vmax)" }}
+                  className="line-clamp-2"
+                >
                   {blog.title}
                 </h5>
-                <p className="text-sm lg:text-base leading-5 lg:leading-6 line-clamp-3 lg:line-clamp-4">
+                <p
+                  style={{ fontSize: "max(1rem, 0.8vmax)" }}
+                  className="line-clamp-3 lg:line-clamp-4"
+                >
                   Learn how to implement secure authentication and authorization
                   in an Express.js API using JWT, TypeScript, and Prisma. This
                   guide walks you through setting up access & refresh tokens,
@@ -79,11 +89,11 @@ export default function Blogs({ id }: { id: string }) {
                   controllers, middlewares, and validations. Perfect for
                   building authentication in real-world apps!
                 </p>
-                <div className="flex items-center flex-wrap gap-1">
+                <div className="flex items-center flex-wrap gap-[0.5vmax]">
                   {blog.keywords.map((keyword) => (
                     <span
                       key={keyword}
-                      className="px-4 py-1.5 text-xs lg:text-sm bg-black text-background rounded-full"
+                      className="px-[2vmax] py-[0.5vmax] text-xs lg:text-sm bg-black text-background rounded-full"
                     >
                       {keyword}
                     </span>
@@ -116,7 +126,7 @@ export default function Blogs({ id }: { id: string }) {
             </Link>
           ))}
         </div>
-      </div>
-    </section>
+      </Container>
+    </Section>
   );
 }

@@ -9,18 +9,30 @@ import {
 
 import { projects } from "@/data/data";
 
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "../ui/carousel";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "../ui/carousel";
+import Section from "../common/section";
+import Container from "../common/container";
 
 export default function Works({ id }: { id: string }) {
   return (
-    <section className="container-main" data-target={id}>
-      <div className="w-full flex flex-col gap-6">
-        <div className="flex flex-col gap-2">
+    <Section className="container-main py-[8vmax]" data-target={id}>
+      <Container className="w-full flex flex-col gap-[3vmax]">
+        <div className="flex flex-col gap-[1vmax]">
           <motion.h2
             initial={{ x: -150, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ duration: 0.8 }}
-            className="text-2xl lg:text-3xl xl:text-4xl font-bold"
+            style={{
+              fontSize: "max(1.6rem, 2.5vmax)",
+              lineHeight: "115%",
+            }}
+            className="max-w-[40vmax] font-medium"
           >
             My Projects
           </motion.h2>
@@ -28,7 +40,8 @@ export default function Works({ id }: { id: string }) {
             initial={{ x: -150, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.1 }}
-            className="text-sm lg:text-base font-medium leading-5 max-w-[451px]"
+            className="md:max-w-[30vmax] text-foreground/80"
+            style={{ fontSize: "max(0.9rem, 1vmax)" }}
           >
             I&apos;ve worked on a variety of projects, from simple websites to
             complex web applications. Here are a few of my favorites.{" "}
@@ -97,15 +110,18 @@ export default function Works({ id }: { id: string }) {
                       </CarouselItem>
                     ))}
                   </CarouselContent>
-                  <CarouselPrevious className="disabled:opacity-0 group-hover/parent:opacity-100 -translate-x-4 group-hover/parent:translate-x-4 opacity-0 text-foreground bg-background h-10 w-10 left-4 transition-all duration-400"/>
-                  <CarouselNext className="disabled:opacity-0 group-hover/parent:opacity-100 translate-x-4 group-hover/parent:-translate-x-4 opacity-0 text-foreground bg-background h-10 w-10 right-4 transition-all duration-400"/>
+                  <CarouselPrevious className="disabled:opacity-0 group-hover/parent:opacity-100 -translate-x-4 group-hover/parent:translate-x-4 opacity-0 text-foreground bg-background h-10 w-10 left-4 transition-all duration-400" />
+                  <CarouselNext className="disabled:opacity-0 group-hover/parent:opacity-100 translate-x-4 group-hover/parent:-translate-x-4 opacity-0 text-foreground bg-background h-10 w-10 right-4 transition-all duration-400" />
                 </Carousel>
                 {/* Project Info */}
-                <div className="flex flex-col lg:gap-1 px-4">
-                  <h4 className="text-base lg:text-xl font-bold">
+                <div className="flex flex-col lg:gap-[0.5vmax] px-[1vmax]">
+                  <h4
+                    style={{ fontSize: "max(1.1rem, 2vmax)" }}
+                    className="truncate"
+                  >
                     {project.title}
                   </h4>
-                  <p className="text-sm lg:text-base font-normal leading-5">
+                  <p style={{ fontSize: "max(0.9rem, 1vmax)" }}>
                     {project.description}
                   </p>
                 </div>
@@ -113,7 +129,7 @@ export default function Works({ id }: { id: string }) {
             </MouseParallaxContainer>
           ))}
         </div>
-      </div>
-    </section>
+      </Container>
+    </Section>
   );
 }
