@@ -129,7 +129,7 @@ export const projects: Project[] = [
       "NextAuth",
     ],
     year: "2025",
-    liveUrl: "https://imperialtours.com",
+    liveUrl: "https://imperialtours.ge",
     githubUrl: "",
     images: [
       "/projects/imperialtours.png",
@@ -169,7 +169,7 @@ export const projects: Project[] = [
       "Redux",
     ],
     year: "2025",
-    liveUrl: "https://serwish.com",
+    liveUrl: "https://serwish.ge",
     githubUrl: "",
     images: [
       "/projects/serwish.png",
@@ -208,7 +208,7 @@ export const projects: Project[] = [
       "REST API",
     ],
     year: "2025",
-    liveUrl: "https://metrix.com",
+    liveUrl: "https://metrix.ge",
     githubUrl: "",
     images: [
       "/projects/metrix.png",

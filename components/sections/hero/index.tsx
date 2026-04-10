@@ -70,7 +70,7 @@ export default function Hero() {
             </Button>
 
             <Button asChild variant={`outline`}>
-              <Link href={`/`}>
+              <Link href={`/pdf/shalamberidze-gigi.pdf`} download={true}>
                 Download CV <DocumentDownload />
               </Link>
             </Button>

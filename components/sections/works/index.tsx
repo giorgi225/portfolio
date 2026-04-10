@@ -33,7 +33,7 @@ export default function Works() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          href="#"
+          href="/projects"
           className="group inline-flex items-center gap-2 text-sm uppercase tracking-[0.15em] text-muted-foreground hover:text-foreground transition-colors"
         >
           View All Projects

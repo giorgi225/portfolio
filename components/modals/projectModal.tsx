@@ -1,16 +1,7 @@
 "use client";
-
-import { useState } from "react";
 import { motion } from "motion/react";
-import {
-  ArrowUpRight,
-  Calendar,
-  Layers,
-  Code2,
-  ExternalLink,
-} from "lucide-react";
+import { Calendar, Layers, Code2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Github01Icon } from "hugeicons-react";
 import { ModalControls, useModal } from "@/hooks/useModal";
 import ModalLayout from "./modalLayout";
 import { DialogDescription, DialogTitle } from "../ui/dialog";

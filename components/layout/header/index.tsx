@@ -2,28 +2,51 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import Link from "next/link";
+import { useRouter, usePathname } from "next/navigation";
 import { X } from "lucide-react";
 import { Menu } from "iconsax-reactjs";
 import { Nav, NavLink } from "./nav";
 
 const navLinks = [
-  { href: "#about", label: "About" },
-  { href: "#work", label: "Work" },
-  { href: "#experience", label: "Experience" },
-  { href: "#contact", label: "Contact" },
+  { href: "/#about", label: "About" },
+  { href: "/#work", label: "Work" },
+  { href: "/#experience", label: "Experience" },
+  { href: "/#contact", label: "Contact" },
 ];
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const router = useRouter();
+  const pathname = usePathname();
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
+    const handleScroll = () => setIsScrolled(window.scrollY > 50);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const handleNavClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    href: string,
+  ) => {
+    // Only intercept hash links like /#about
+    if (!href.startsWith("/#")) return;
+
+    e.preventDefault();
+    const hash = href.slice(1); // → #about
+
+    setIsMobileMenuOpen(false);
+
+    if (pathname === "/") {
+      // Already on home — update URL and scroll
+      window.history.pushState(null, "", href);
+      document.querySelector(hash)?.scrollIntoView({ behavior: "instant" });
+    } else {
+      // Navigate to home, then scroll after the page mounts
+      router.push(href);
+    }
+  };
 
   return (
     <>
@@ -55,8 +78,9 @@ export default function Header() {
             <Nav className="hidden md:flex items-center gap-12">
               {navLinks.map((link, index) => (
                 <NavLink
-                  key={index}
+                  key={link.href}
                   href={link.href}
+                  onClick={(e) => handleNavClick(e, link.href)}
                   initial={{ opacity: 0, y: -20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.1 * (index + 1), duration: 0.5 }}
@@ -93,10 +117,10 @@ export default function Header() {
             <Nav className="flex flex-col items-center justify-center h-full gap-8">
               {navLinks.map((link, index) => (
                 <NavLink
-                  key={index}
+                  key={link.href}
                   className="text-2xl uppercase tracking-[0.2em] text-foreground hover:text-accent"
                   href={link.href}
-                  onClick={() => setIsMobileMenuOpen(false)}
+                  onClick={(e) => handleNavClick(e, link.href)}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: 20 }}
